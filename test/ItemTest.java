@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import model.Item;
+
 /**
  * @author Carl
  *
@@ -44,5 +46,21 @@ public class ItemTest {
 	public void testGetItemName() {
 		fail("Not yet implemented");
 	}
+	
+	/**
+	 * Test method for {@link model.Item#isValidBid(java.lang.Integer)}.
+	 */
+	@Test
+	public void testIsValidBid() {
+		Item theItem = new Item("Banana", 15);
+		
+		assertTrue(theItem.isValidBid(15));
+		assertTrue(theItem.isValidBid(16));
+		assertTrue(theItem.isValidBid(30));
+		assertFalse(theItem.isValidBid(14));
+		assertFalse(theItem.isValidBid(10));
+		assertFalse(theItem.isValidBid(-5));
+	}
+	
 
 }

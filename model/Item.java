@@ -15,6 +15,15 @@ public class Item {
 	private int myMinBid;
 	
 	
+	public Item(String theItemName){
+		myItemName = theItemName;
+	}
+	
+	public Item(String theItemName, int theMinBid){
+		myItemName = theItemName;
+		myMinBid = theMinBid;
+	}
+	
 	public boolean isValidBid(int theAmount)
 	{
 		return theAmount >= myMinBid;
@@ -172,10 +181,6 @@ public class Item {
 	 */
 	public void setMyMinBid(int myMinBid) {
 		this.myMinBid = myMinBid;
-	}
-	
-	public Item(String theItemName){
-		myItemName = theItemName;
 	}
 	
 	public String getItemName(){
