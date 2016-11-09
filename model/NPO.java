@@ -33,7 +33,7 @@ public class NPO extends User{
 	public Boolean getLastAuctionDate(Auction theAuction){
 		if (theAuction.getNPO().getMyUserName().equals(this.getMyUserName())
 				|| !(hasAuction)){
-			if((theAuction.getAuctionDate().getYear() - myAuction.getAuctionDate().getYear()> 1){
+			if((theAuction.getAuctionDate().getYear() - myAuction.getAuctionDate().getYear()> 1)){
 				return true;
 			} else if (theAuction.getAuctionDate().getYear() - myAuction.getAuctionDate().getYear()== 1
 				&& theAuction.getAuctionDate().getMonth()>= myAuction.getAuctionDate().getMonth()){
