@@ -3,28 +3,40 @@ package model;
 public class Item {
 	
 	private String myItemName;
-	private String myAuctionName;
 	private String myDonor;
 	private String myCondition;
 	private String mySize;
 	private String myNotes;
 	private String myDescription;
-	private int myUnitQuantity;
-	private int mySellingPrice;
 	private int myItemNumber;
-	private int myMinBid;
+	private double myMinBid;
 	
 	
 	public Item(String theItemName){
 		myItemName = theItemName;
 	}
 	
-	public Item(String theItemName, int theMinBid){
+	public Item(String theItemName,String theAuctionName, String theDonor,
+			String theCondition, String theSize, String theNote,
+			String theDescription, double theMinBid, int theItemNumber){
 		myItemName = theItemName;
+		myDonor = theDonor;
+		myCondition = theCondition;
+		mySize = theSize;
+		myNotes = theNote;
+		myDescription = theDescription;
+		myMinBid = theMinBid;
+		myItemNumber = theItemNumber;
+	}
+	
+	public Item(String theItemName,String theCondition, String theSize, double theMinBid){
+		myItemName = theItemName;
+		myCondition = theCondition;
+		mySize = theSize;
 		myMinBid = theMinBid;
 	}
 	
-	public boolean isValidBid(int theAmount)
+	public boolean isValidBid(double theAmount)
 	{
 		return theAmount >= myMinBid;
 	}
@@ -43,19 +55,6 @@ public class Item {
 		this.myItemName = myItemName;
 	}
 
-	/**
-	 * @return the myAuctionName
-	 */
-	public String getMyAuctionName() {
-		return myAuctionName;
-	}
-
-	/**
-	 * @param myAuctionName the myAuctionName to set
-	 */
-	public void setMyAuctionName(String myAuctionName) {
-		this.myAuctionName = myAuctionName;
-	}
 
 	/**
 	 * @return the myDonor
@@ -127,33 +126,6 @@ public class Item {
 		this.myDescription = myDescription;
 	}
 
-	/**
-	 * @return the myUnitQuantity
-	 */
-	public int getMyUnitQuantity() {
-		return myUnitQuantity;
-	}
-
-	/**
-	 * @param myUnitQuantity the myUnitQuantity to set
-	 */
-	public void setMyUnitQuantity(int myUnitQuantity) {
-		this.myUnitQuantity = myUnitQuantity;
-	}
-
-	/**
-	 * @return the mySellingPrice
-	 */
-	public int getMySellingPrice() {
-		return mySellingPrice;
-	}
-
-	/**
-	 * @param mySellingPrice the mySellingPrice to set
-	 */
-	public void setMySellingPrice(int mySellingPrice) {
-		this.mySellingPrice = mySellingPrice;
-	}
 
 	/**
 	 * @return the myItemNumber
@@ -172,7 +144,7 @@ public class Item {
 	/**
 	 * @return the myMinBid
 	 */
-	public int getMyMinBid() {
+	public double getMyMinBid() {
 		return myMinBid;
 	}
 
@@ -185,5 +157,12 @@ public class Item {
 	
 	public String getItemName(){
 		return myItemName;
+	}
+	
+	public boolean isEqual(Item theOtherItem){
+		return(this.getItemName().equals( theOtherItem.getItemName())
+				&& this.getMyCondition().equals(theOtherItem.getMyCondition())
+				&& this.getMyMinBid() == theOtherItem.getMyMinBid()
+				&& this.getMySize().equals(theOtherItem.getMySize()));
 	}
 }

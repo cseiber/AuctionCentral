@@ -6,7 +6,6 @@ package test;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import org.junit.After;
 import org.junit.Before;
@@ -31,7 +30,7 @@ public class AuctionTest {
 	@Before
 	public void setUp() throws Exception {
 		a = new NPO("NPOa", "a");
-		theAuction = new Auction(a, 3);
+		theAuction = new Auction(a, 2016, 11, 8, 15, 30);
 		
 	}
 
