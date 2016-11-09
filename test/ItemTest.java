@@ -16,50 +16,93 @@ import model.Item;
  *
  */
 public class ItemTest {
-
+	private Item myItem;
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
+		myItem = new Item("Banana", "Good", "Small", 15);
 	}
+	
+//	public void testItemOnMissingItemName(){
+//		Item someItem = new Item( null,"Good", "Small", 15);
+//		
+//		assertEquals(myItem.getItemName(),someItem.getItemName());
+//	}
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@After
-	public void tearDown() throws Exception {
-	}
+//	/**
+//	 * @throws java.lang.Exception
+//	 */
+//	@After
+//	public void tearDown() throws Exception {
+//	}
+//
+//	/**
+//	 * Test method for {@link model.Item#Item(java.lang.String)}.
+//	 */
+//	@Test
+//	public void testItem() {
+//		fail("Not yet implemented");
+//	}
 
+//	/**
+//	 * Test method for {@link model.Item#getItemName()}.
+//	 */
+//	@Test
+//	public void testGetItemName() {
+//		fail("Not yet implemented");
+//	}
+	
 	/**
-	 * Test method for {@link model.Item#Item(java.lang.String)}.
+	 * Test method for {@link model.Item#isValidBid(java.lang.Integer)}.
 	 */
 	@Test
-	public void testItem() {
-		fail("Not yet implemented");
-	}
+	public void testIsValidBidOnNegative() {
+		
+		assertFalse(myItem.isValidBid(-0.01));
+		assertFalse(myItem.isValidBid(-10));
 
-	/**
-	 * Test method for {@link model.Item#getItemName()}.
-	 */
+	}
+	
 	@Test
-	public void testGetItemName() {
-		fail("Not yet implemented");
+	public void testIsEqual(){
+		Item myItem1 = new Item("Banana", "Good", "Small", 15);
+		Item myItem2 = new Item("Banana", "Good", "Small", 15);
+		assertTrue(myItem1.isEqual(myItem2));
 	}
 	
 	/**
 	 * Test method for {@link model.Item#isValidBid(java.lang.Integer)}.
 	 */
 	@Test
-	public void testIsValidBid() {
-		Item theItem = new Item("Banana", 15);
+	public void testIsValidBidOnZero() {
 		
-		assertTrue(theItem.isValidBid(15));
-		assertTrue(theItem.isValidBid(16));
-		assertTrue(theItem.isValidBid(30));
-		assertFalse(theItem.isValidBid(14));
-		assertFalse(theItem.isValidBid(10));
-		assertFalse(theItem.isValidBid(-5));
+		assertFalse(myItem.isValidBid(0));
+		
+	}
+	
+	@Test
+	public void testIsValidBidOnMinBidPrice() {
+		
+		assertTrue(myItem.isValidBid(15));
+
+	}
+	
+	@Test
+	public void testIsValidBidOnPositiveMinBidPrice() {
+		
+		assertFalse(myItem.isValidBid(10.00));
+		
+
+	}
+	
+	@Test
+	public void testIsValidBidOnAboveMinBidPrice() {
+		
+		assertTrue(myItem.isValidBid(15.01));
+		assertTrue(myItem.isValidBid(25.00));
+
 	}
 	
 
