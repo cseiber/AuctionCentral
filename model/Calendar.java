@@ -11,6 +11,10 @@ public class Calendar {
 	
 	private Collection<Auction> myAuctionList;
 	
+	public Calendar(Collection<Auction> theAuction) {
+		myAuctionList = theAuction;
+	}
+	
 	public Calendar() {
 		myAuctionList = new ArrayList<Auction>();
 	}

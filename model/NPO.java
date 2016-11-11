@@ -7,6 +7,7 @@ public class NPO extends User{
 	private Auction myAuction;
 	public NPO(String theUserName, String theName){
 		super(theUserName, theName);
+		super.myUserType = "NPO";
 		hasAuction = false;
 	}
 	

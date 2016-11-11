@@ -1,11 +1,17 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 
 
-public class Auction {
+public class Auction implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6428727641409006380L;
 	private NPO NPOname;
 	private AuctionDate auctionDate;
 //	private String contactPerson;
@@ -13,7 +19,6 @@ public class Auction {
 	//private int expectedItems;
 	private Collection<Item> myItemList;
 	
-
 	public Auction(NPO NPOname,
 			int year, int month, int day, int hour, int minute){
 		this.NPOname = NPOname;

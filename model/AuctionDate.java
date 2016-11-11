@@ -1,7 +1,8 @@
 package model;
 
+import java.io.Serializable;
 
-public class AuctionDate {
+public class AuctionDate implements Serializable{
 	private int year;
 	private int month;
 	private int date;
