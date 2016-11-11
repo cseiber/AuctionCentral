@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -13,19 +14,86 @@ public class Auction implements Serializable {
 	 */
 	private static final long serialVersionUID = 6428727641409006380L;
 	private NPO NPOname;
-	private AuctionDate auctionDate;
-//	private String contactPerson;
+	private LocalDateTime auctionDate;
+/**
+	 * @return the auctionDate
+	 */
+	public LocalDateTime getAuctionDate() {
+		return auctionDate;
+	}
+
+	/**
+	 * @param auctionDate the auctionDate to set
+	 */
+	public void setAuctionDate(LocalDateTime auctionDate) {
+		this.auctionDate = auctionDate;
+	}
+
+	/**
+	 * @return the expectedItems
+	 */
+	public int getExpectedItems() {
+		return expectedItems;
+	}
+
+	/**
+	 * @param expectedItems the expectedItems to set
+	 */
+	public void setExpectedItems(int expectedItems) {
+		this.expectedItems = expectedItems;
+	}
+
+	/**
+	 * @return the myNotes
+	 */
+	public String getMyNotes() {
+		return myNotes;
+	}
+
+	/**
+	 * @param myNotes the myNotes to set
+	 */
+	public void setMyNotes(String myNotes) {
+		this.myNotes = myNotes;
+	}
+
+	/**
+	 * @return the myItemList
+	 */
+	public Collection<Item> getMyItemList() {
+		return myItemList;
+	}
+
+	/**
+	 * @param myItemList the myItemList to set
+	 */
+	public void setMyItemList(Collection<Item> myItemList) {
+		this.myItemList = myItemList;
+	}
+
+	//	private String contactPerson;
 //	private String contactPhone;
-	//private int expectedItems;
+	private int expectedItems;
+	private String myNotes;
 	private Collection<Item> myItemList;
 	
-	public Auction(NPO NPOname,
-			int year, int month, int day, int hour, int minute){
+//	public Auction(NPO NPOname, LocalDateTime theDate){
+//		this.NPOname = NPOname;
+////		this.contactPerson = contactPerson;
+////		this. contactPhone = contactPhone;
+//		auctionDate = theDate;
+//		expectedItems = 0;
+//		myNotes = "";
+//		myItemList = new ArrayList<Item>();
+//	}
+	
+	public Auction(NPO NPOname, LocalDateTime theDate, int itemCount, String theNotes){
 		this.NPOname = NPOname;
 //		this.contactPerson = contactPerson;
 //		this. contactPhone = contactPhone;
-		auctionDate = new AuctionDate(year, month, day, hour, minute);
-		//expectedItems = expectedItems;
+		myNotes = theNotes;
+		auctionDate = theDate;
+		expectedItems = itemCount;
 		myItemList = new ArrayList<Item>();
 	}
 	
@@ -36,10 +104,6 @@ public class Auction implements Serializable {
 
 	public NPO getNPO(){
 		return NPOname;
-	}
-	
-	public AuctionDate getAuctionDate(){
-		return auctionDate;
 	}
 	
 //	public int getTotalNumberOfItem(){

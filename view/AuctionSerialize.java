@@ -29,7 +29,7 @@ public class AuctionSerialize {
 		
 		try{
 			
-			FileInputStream fileIn = new FileInputStream("/Users/phucv/Documents/GitHub/AuctionCentral/userlist.ser");
+			FileInputStream fileIn = new FileInputStream("C:/Users/Carl/Documents/userlist.ser");
 	        ObjectInputStream in = new ObjectInputStream(fileIn);
 	        UserList = (Collection<User>) in.readObject();
 	        in.close();
@@ -51,30 +51,30 @@ public class AuctionSerialize {
 			}
 		}
 		
-		AuctionList.add(new Auction(NPOList.get(0), 2016, 11, 10, 9, 00));
-		AuctionList.add(new Auction(NPOList.get(1), 2016, 11, 11, 15, 30));
-		AuctionList.add(new Auction(NPOList.get(2), 2016, 11, 12, 9, 00));
-		AuctionList.add(new Auction(NPOList.get(3), 2016, 11, 14, 16, 30));
-		AuctionList.add(new Auction(NPOList.get(4), 2016, 11, 14, 12, 30));
-		AuctionList.add(new Auction(NPOList.get(5), 2016, 11, 16, 10, 30));
-		AuctionList.add(new Auction(NPOList.get(6), 2016, 11, 17, 13, 0));
-		AuctionList.add(new Auction(NPOList.get(7), 2016, 11, 18, 15, 30));
-		AuctionList.add(new Auction(NPOList.get(8), 2016, 11, 21, 11, 30));
-		AuctionList.add(new Auction(NPOList.get(9), 2016, 11, 23, 13, 30));
-		AuctionList.add(new Auction(NPOList.get(10), 2016, 11, 25, 9, 30));
-		AuctionList.add(new Auction(NPOList.get(11), 2016, 11, 25, 15, 00));
-		AuctionList.add(new Auction(NPOList.get(12), 2016, 11, 26, 13, 00));
-		AuctionList.add(new Auction(NPOList.get(13), 2016, 11, 28, 10, 00));
-		AuctionList.add(new Auction(NPOList.get(14), 2016, 11, 29, 12, 00));
-		AuctionList.add(new Auction(NPOList.get(15), 2016, 11, 30, 9, 00));
-		AuctionList.add(new Auction(NPOList.get(16), 2016, 11, 30, 14, 00));
-		AuctionList.add(new Auction(NPOList.get(17), 2016, 12, 2, 11, 00));
-		AuctionList.add(new Auction(NPOList.get(18), 2016, 12, 5, 11, 00));
-		AuctionList.add(new Auction(NPOList.get(19), 2016, 12, 5, 18, 00));
-		AuctionList.add(new Auction(NPOList.get(20), 2016, 12, 7, 11, 00));
-		AuctionList.add(new Auction(NPOList.get(21), 2016, 12, 8, 15, 00));
-		AuctionList.add(new Auction(NPOList.get(22), 2016, 12, 9, 11, 00));
-		AuctionList.add(new Auction(NPOList.get(23), 2016, 12, 10, 11, 00));
+//		AuctionList.add(new Auction(NPOList.get(0), 2016, 11, 10, 9, 00));
+//		AuctionList.add(new Auction(NPOList.get(1), 2016, 11, 11, 15, 30));
+//		AuctionList.add(new Auction(NPOList.get(2), 2016, 11, 12, 9, 00));
+//		AuctionList.add(new Auction(NPOList.get(3), 2016, 11, 14, 16, 30));
+//		AuctionList.add(new Auction(NPOList.get(4), 2016, 11, 14, 12, 30));
+//		AuctionList.add(new Auction(NPOList.get(5), 2016, 11, 16, 10, 30));
+//		AuctionList.add(new Auction(NPOList.get(6), 2016, 11, 17, 13, 0));
+//		AuctionList.add(new Auction(NPOList.get(7), 2016, 11, 18, 15, 30));
+//		AuctionList.add(new Auction(NPOList.get(8), 2016, 11, 21, 11, 30));
+//		AuctionList.add(new Auction(NPOList.get(9), 2016, 11, 23, 13, 30));
+//		AuctionList.add(new Auction(NPOList.get(10), 2016, 11, 25, 9, 30));
+//		AuctionList.add(new Auction(NPOList.get(11), 2016, 11, 25, 15, 00));
+//		AuctionList.add(new Auction(NPOList.get(12), 2016, 11, 26, 13, 00));
+//		AuctionList.add(new Auction(NPOList.get(13), 2016, 11, 28, 10, 00));
+//		AuctionList.add(new Auction(NPOList.get(14), 2016, 11, 29, 12, 00));
+//		AuctionList.add(new Auction(NPOList.get(15), 2016, 11, 30, 9, 00));
+//		AuctionList.add(new Auction(NPOList.get(16), 2016, 11, 30, 14, 00));
+//		AuctionList.add(new Auction(NPOList.get(17), 2016, 12, 2, 11, 00));
+//		AuctionList.add(new Auction(NPOList.get(18), 2016, 12, 5, 11, 00));
+//		AuctionList.add(new Auction(NPOList.get(19), 2016, 12, 5, 18, 00));
+//		AuctionList.add(new Auction(NPOList.get(20), 2016, 12, 7, 11, 00));
+//		AuctionList.add(new Auction(NPOList.get(21), 2016, 12, 8, 15, 00));
+//		AuctionList.add(new Auction(NPOList.get(22), 2016, 12, 9, 11, 00));
+//		AuctionList.add(new Auction(NPOList.get(23), 2016, 12, 10, 11, 00));
 
 		((ArrayList<Auction>) AuctionList).get(0).addItem(new Item("Chocolate", "New", "Small", 10.00));
 		((ArrayList<Auction>) AuctionList).get(0).addItem(new Item("Candy", "New", "Small", 7.50));

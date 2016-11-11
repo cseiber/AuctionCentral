@@ -46,7 +46,7 @@ public class main {
 		Collection<Auction> AuctionList = new ArrayList<Auction>();
 		try{
 			
-			FileInputStream fileIn = new FileInputStream("/Users/phucv/Documents/GitHub/AuctionCentral/auctionlist.ser");
+			FileInputStream fileIn = new FileInputStream("auctionlist.ser");
 	        ObjectInputStream in = new ObjectInputStream(fileIn);
 	        AuctionList = (Collection<Auction>) in.readObject();
 	        in.close();

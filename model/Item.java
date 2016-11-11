@@ -19,13 +19,18 @@ public class Item implements Serializable {
 	private double myMinBid;
 	
 	
-	public Item(String theItemName){
+	public Item(String theItemName,String theCondition, String theSize, double theMinBid /*int theItemNumber*/){
 		myItemName = theItemName;
+		myCondition = theCondition;
+		mySize = theSize;
+		myMinBid = theMinBid;
+		//myItemNumber = theItemNumber;
 	}
 	
 	public Item(String theItemName,String theAuctionName, String theDonor,
 			String theCondition, String theSize, String theNote,
 			String theDescription, double theMinBid, int theItemNumber){
+		//Item(theItemName, theCondition, theSize, theMinBid);
 		myItemName = theItemName;
 		myDonor = theDonor;
 		myCondition = theCondition;
@@ -35,13 +40,7 @@ public class Item implements Serializable {
 		myMinBid = theMinBid;
 		myItemNumber = theItemNumber;
 	}
-	
-	public Item(String theItemName,String theCondition, String theSize, double theMinBid){
-		myItemName = theItemName;
-		myCondition = theCondition;
-		mySize = theSize;
-		myMinBid = theMinBid;
-	}
+
 	
 	public boolean isValidBid(double theAmount)
 	{

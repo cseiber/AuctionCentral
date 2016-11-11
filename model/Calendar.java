@@ -1,6 +1,8 @@
 package model;
 
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -20,16 +22,27 @@ public class Calendar {
 	}
 	
 	// didn't catch the BR : no more than 2 auctions per day.
-	public void addAuction(Auction theAuction) {
+	public boolean addAuction(NPO theNPO, LocalDateTime theDate, int numItems, String theNotes) {
 		// if the NPO already has the auction, throw error
-		if(theAuction.getNPO().hasAuction()){
-			System.out.println("ERROR: You already have an auction."
-					+ " You are only allowed one auction at a time");
-		} else{
-			myAuctionList.add(theAuction);
-			theAuction.getNPO().setAuction(theAuction);
-			theAuction.getNPO().setAuction(true);
-		}
+		int auctions = 0;
+		if(!theNPO.hasAuction() && theNPO.isValidAuctionDate(theDate) && myAuctionList.size() < 25){
+			for (Auction a : myAuctionList)
+			{
+				if(a.getAuctionDate().toLocalDate().isEqual(theDate.toLocalDate()))
+					auctions++;
+			}
+			if (auctions < 2)
+			{
+				Auction newAuction = new Auction(theNPO, theDate, numItems, theNotes);
+				myAuctionList.add(newAuction);
+				theNPO.setAuction(true);
+				theNPO.setLastAuctionDate(theDate);
+				return true;
+			}
+//			System.out.println("ERROR: You already have an auction."
+//					+ " You are only allowed one auction at a time");
+		} 
+		return false;
 	}
 	
 	
@@ -37,9 +50,9 @@ public class Calendar {
 		//returnList contain all the auctions after the pass in date
 		Collection<Auction> returnList = new ArrayList<Auction>();
 		for (Auction curAuction : myAuctionList){
-			if (curAuction.getAuctionDate().isAfterThisDate(theDate)){
-				returnList.add(curAuction);
-			}
+//			if (curAuction.getAuctionDate().isAfterThisDate(theDate)){
+//				returnList.add(curAuction);
+//			}
 		}
 		return returnList;
 	}
