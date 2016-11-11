@@ -39,6 +39,7 @@ public class Item implements Serializable {
 		myDescription = theDescription;
 		myMinBid = theMinBid;
 		myItemNumber = theItemNumber;
+		//This is a comment for Aaron
 	}
 
 	
