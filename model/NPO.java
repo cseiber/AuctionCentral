@@ -12,7 +12,7 @@ public class NPO extends User implements Serializable{
 	public NPO(String theUserName, String theName){
 		super(theUserName, theName, "NPO");
 		hasAuction = false;
-		lastAuctionDate = LocalDateTime.of(1970, 1, 1, 12, 00);
+		lastAuctionDate = LocalDateTime.of(1970, 1, 1, 12, 00); //Default initializer
 	}
 	
 	public void setAuction(boolean x){

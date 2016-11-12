@@ -135,7 +135,7 @@ public class CalendarTest {
 	 * Test method for {@link model.Calendar#addAuction(model.Auction)}.
 	 */
 	@Test
-	public void testAddAuctionOnAddingTwentyFourScheduled() {
+	public void testAddAuctionOnAddingWhenTwentyFourScheduled() {
 		NPO npo = new NPO("NPO", "g");
 		NPO npo2 = new NPO("NPO2", "g2");
 		NPO npo3 = new NPO("NPO3", "g3");

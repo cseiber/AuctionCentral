@@ -37,9 +37,9 @@ public class NPOTest {
 	 * Test method for {@link model.NPO#isValidAuctionDate(java.time.LocalDateTime)}.
 	 */
 	@Test
-	public void testisValidAuctionDateOnDateGreaterThanOneYear() {
+	public void testisValidAuctionDateOnPreviousAuctionGreaterThanOneYear() {
 		NPO theNPO = new NPO("theNPO", "NPO");
-		theNPO.setLastAuctionDate(LocalDateTime.of(2015, 7, 30, 18, 0));
+		theNPO.setLastAuctionDate(LocalDateTime.now().minusDays(400));
 		assertTrue(theNPO.isValidAuctionDate(LocalDateTime.now().plusMonths(1)));
 	}
 	
@@ -49,8 +49,31 @@ public class NPOTest {
 	@Test
 	public void testisValidAuctionDateOnDateLessThanOneYear() {
 		NPO theNPO = new NPO("theNPO", "NPO");
-		theNPO.setLastAuctionDate(LocalDateTime.of(2015, 12, 30, 18, 0));
+		theNPO.setLastAuctionDate(LocalDateTime.now().minusDays(360));
 		assertFalse(theNPO.isValidAuctionDate(LocalDateTime.now()));
+	}
+	
+	/**
+	 * Test method for {@link model.NPO#isValidAuctionDate(java.time.LocalDateTime)}.
+	 */
+	@Test
+	public void testisValidAuctionDateOnExactlyOneYearMinusOneDay() {
+		NPO theNPO = new NPO("theNPO", "NPO");
+		theNPO.setLastAuctionDate(LocalDateTime.now().minusDays(364));
+		assertFalse(theNPO.isValidAuctionDate(LocalDateTime.now()));
+	}
+	
+	/**
+	 * Test method for {@link model.NPO#isValidAuctionDate(java.time.LocalDateTime)}.
+	 */
+	@Test
+	public void testisValidAuctionDateOnExactlyOneYearSinceLastAuction() {
+		NPO theNPO = new NPO("theNPO", "NPO");
+		
+		//Days offset is so the test wont fail due to the BR stating auctions must be scheduled
+		//for at least one week out.
+		theNPO.setLastAuctionDate(LocalDateTime.now().minusYears(1).plusDays(10));
+		assertTrue(theNPO.isValidAuctionDate(LocalDateTime.now().plusDays(10)));
 	}
 	
 	/**
@@ -59,7 +82,6 @@ public class NPOTest {
 	@Test
 	public void testisValidAuctionDateOnDateLessThanOneMonthInFuture() {
 		NPO theNPO = new NPO("theNPO", "NPO");
-		theNPO.setLastAuctionDate(LocalDateTime.of(2010, 12, 30, 18, 0));
 		assertTrue(theNPO.isValidAuctionDate(LocalDateTime.now().plusDays(15)));
 	}
 	
@@ -69,7 +91,6 @@ public class NPOTest {
 	@Test
 	public void testisValidAuctionDateOnDateExactlyOneMonthInFuture() {
 		NPO theNPO = new NPO("theNPO", "NPO");
-		theNPO.setLastAuctionDate(LocalDateTime.of(2010, 12, 30, 18, 0));
 		assertTrue(theNPO.isValidAuctionDate(LocalDateTime.now().plusMonths(1)));
 	}
 	
@@ -77,9 +98,8 @@ public class NPOTest {
 	 * Test method for {@link model.NPO#isValidAuctionDate(java.time.LocalDateTime)}.
 	 */
 	@Test
-	public void testisValidAuctionDateOnDateMoreThanOneMonthInFuture() {
+	public void testisValidAuctionDateOnDateOneMonthAndOneDayInFuture() {
 		NPO theNPO = new NPO("theNPO", "NPO");
-		theNPO.setLastAuctionDate(LocalDateTime.of(2010, 12, 30, 18, 0));
 		assertFalse(theNPO.isValidAuctionDate(LocalDateTime.now().plusMonths(1).plusDays(1)));
 	}
 	
@@ -87,10 +107,45 @@ public class NPOTest {
 	 * Test method for {@link model.NPO#isValidAuctionDate(java.time.LocalDateTime)}.
 	 */
 	@Test
-	public void testisValidAuctionDateOnDateLessThantOneWeekInFuture() {
+	public void testisValidAuctionDateOnDateMoreThanOneMonthAndOneDayInFuture() {
 		NPO theNPO = new NPO("theNPO", "NPO");
-		theNPO.setLastAuctionDate(LocalDateTime.of(2010, 12, 30, 18, 0));
+		assertFalse(theNPO.isValidAuctionDate(LocalDateTime.now().plusMonths(1).plusDays(5)));
+	}
+	
+	/**
+	 * Test method for {@link model.NPO#isValidAuctionDate(java.time.LocalDateTime)}.
+	 */
+	@Test
+	public void testisValidAuctionDateOnDateLessThanSixDaysInFuture() {
+		NPO theNPO = new NPO("theNPO", "NPO");
 		assertFalse(theNPO.isValidAuctionDate(LocalDateTime.now().plusDays(3)));
+	}
+	
+	/**
+	 * Test method for {@link model.NPO#isValidAuctionDate(java.time.LocalDateTime)}.
+	 */
+	@Test
+	public void testisValidAuctionDateOnDateExactlyOneWeekInFuture() {
+		NPO theNPO = new NPO("theNPO", "NPO");
+		assertTrue(theNPO.isValidAuctionDate(LocalDateTime.now().plusDays(7)));
+	}
+	
+	/**
+	 * Test method for {@link model.NPO#isValidAuctionDate(java.time.LocalDateTime)}.
+	 */
+	@Test
+	public void testisValidAuctionDateOnDateToday() {
+		NPO theNPO = new NPO("theNPO", "NPO");
+		assertFalse(theNPO.isValidAuctionDate(LocalDateTime.now()));
+	}
+	
+	/**
+	 * Test method for {@link model.NPO#isValidAuctionDate(java.time.LocalDateTime)}.
+	 */
+	@Test
+	public void testisValidAuctionDateOnDateExactlytSixDaysInFuture() {
+		NPO theNPO = new NPO("theNPO", "NPO");
+		assertFalse(theNPO.isValidAuctionDate(LocalDateTime.now().plusDays(6)));
 	}
 	
 	/**
@@ -99,7 +154,6 @@ public class NPOTest {
 	@Test
 	public void testisValidAuctionDateOnDateInThePast() {
 		NPO theNPO = new NPO("theNPO", "NPO");
-		theNPO.setLastAuctionDate(LocalDateTime.of(2010, 12, 30, 18, 0));
 		assertFalse(theNPO.isValidAuctionDate(LocalDateTime.now().minusDays(15)));
 	}
 

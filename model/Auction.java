@@ -126,8 +126,14 @@ public class Auction implements Serializable {
 	
 	
 	// call isEqual() in item method to implement this method.
-	public void addItem(Item theItem){
+	public boolean addItem(Item theItem){
+		for (Item i : myItemList)
+		{
+			if (theItem.isEqual(i))
+				return false;
+		}
 		myItemList.add(theItem);
+		return true;
 	}
 	
 	public Item getItem(int theItemID)
