@@ -15,7 +15,50 @@ public class Auction implements Serializable {
 	private static final long serialVersionUID = 6428727641409006380L;
 	private NPO NPOname;
 	private LocalDateTime auctionDate;
-/**
+	private int myID;
+	//	private String contactPerson;
+//	private String contactPhone;
+	private int expectedItems;
+	private String myNotes;
+	private Collection<Item> myItemList;
+	
+	public Auction(NPO NPOname, LocalDateTime theDate, int itemCount, String theNotes, int theID){
+		this.NPOname = NPOname;
+//		this.contactPerson = contactPerson;
+//		this. contactPhone = contactPhone;
+		myNotes = theNotes;
+		auctionDate = theDate;
+		expectedItems = itemCount;
+		myItemList = new ArrayList<Item>();
+		myID = theID;
+	}
+	
+	/**
+	 * @return the nPOname
+	 */
+	public NPO getNPOname() {
+		return NPOname;
+	}
+	/**
+	 * @param nPOname the nPOname to set
+	 */
+	public void setNPOname(NPO nPOname) {
+		NPOname = nPOname;
+	}
+	/**
+	 * @return the myID
+	 */
+	public int getMyID() {
+		return myID;
+	}
+	/**
+	 * @param myID the myID to set
+	 */
+	public void setMyID(int myID) {
+		this.myID = myID;
+	}
+	
+	/**
 	 * @return the auctionDate
 	 */
 	public LocalDateTime getAuctionDate() {
@@ -70,12 +113,6 @@ public class Auction implements Serializable {
 	public void setMyItemList(Collection<Item> myItemList) {
 		this.myItemList = myItemList;
 	}
-
-	//	private String contactPerson;
-//	private String contactPhone;
-	private int expectedItems;
-	private String myNotes;
-	private Collection<Item> myItemList;
 	
 //	public Auction(NPO NPOname, LocalDateTime theDate){
 //		this.NPOname = NPOname;
@@ -87,19 +124,21 @@ public class Auction implements Serializable {
 //		myItemList = new ArrayList<Item>();
 //	}
 	
-	public Auction(NPO NPOname, LocalDateTime theDate, int itemCount, String theNotes){
-		this.NPOname = NPOname;
-//		this.contactPerson = contactPerson;
-//		this. contactPhone = contactPhone;
-		myNotes = theNotes;
-		auctionDate = theDate;
-		expectedItems = itemCount;
-		myItemList = new ArrayList<Item>();
-	}
 	
 	// call isEqual() in item method to implement this method.
 	public void addItem(Item theItem){
 		myItemList.add(theItem);
+	}
+	
+	public Item getItem(int theItemID)
+	{
+		Item item = null;
+		for (Item i : myItemList)
+		{
+			if (i.getMyItemID() == theItemID)
+				item = i;
+		}
+		return item;
 	}
 
 	public NPO getNPO(){

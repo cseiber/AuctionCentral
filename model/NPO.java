@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.Period;
 
-public class NPO extends User{
+public class NPO extends User implements Serializable{
 	private boolean hasAuction;
 	LocalDateTime lastAuctionDate;
 	

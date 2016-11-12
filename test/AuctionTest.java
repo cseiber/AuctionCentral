@@ -30,7 +30,7 @@ public class AuctionTest {
 	@Before
 	public void setUp() throws Exception {
 		a = new NPO("NPOa", "a");
-		theAuction = new Auction(a, 2016, 11, 8, 15, 30);
+//		theAuction = new Auction(a, 2016, 11, 8, 15, 30,);
 		
 	}
 

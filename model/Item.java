@@ -15,7 +15,7 @@ public class Item implements Serializable {
 	private String mySize;
 	private String myNotes;
 	private String myDescription;
-	private int myItemNumber;
+	private int myItemID;
 	private double myMinBid;
 	
 	
@@ -38,7 +38,7 @@ public class Item implements Serializable {
 		myNotes = theNote;
 		myDescription = theDescription;
 		myMinBid = theMinBid;
-		myItemNumber = theItemNumber;
+		myItemID = theItemNumber;
 		//This is another comment for Aaron
 	}
 
@@ -137,16 +137,16 @@ public class Item implements Serializable {
 	/**
 	 * @return the myItemNumber
 	 */
-	public int getMyItemNumber() {
-		return myItemNumber;
+	public int getMyItemID() {
+		return myItemID;
 	}
 
-	/**
-	 * @param myItemNumber the myItemNumber to set
-	 */
-	public void setMyItemNumber(int myItemNumber) {
-		this.myItemNumber = myItemNumber;
-	}
+//	/**
+//	 * @param myItemNumber the myItemNumber to set
+//	 */
+//	public void setMyItemNumber(int myItemNumber) {
+//		this.myItemID = myItemNumber;
+//	}
 
 	/**
 	 * @return the myMinBid

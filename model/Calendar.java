@@ -12,9 +12,11 @@ import java.util.Collection;
 public class Calendar {
 	
 	private Collection<Auction> myAuctionList;
+	private int nextAuctionID;
 	
 	public Calendar(Collection<Auction> theAuction) {
 		myAuctionList = theAuction;
+		nextAuctionID = 1;
 	}
 	
 	public Calendar() {
@@ -33,15 +35,33 @@ public class Calendar {
 			}
 			if (auctions < 2)
 			{
-				Auction newAuction = new Auction(theNPO, theDate, numItems, theNotes);
+				Auction newAuction = new Auction(theNPO, theDate, numItems, theNotes, nextAuctionID);
 				myAuctionList.add(newAuction);
 				theNPO.setAuction(true);
 				theNPO.setLastAuctionDate(theDate);
+				nextAuctionID++;
 				return true;
 			}
 //			System.out.println("ERROR: You already have an auction."
 //					+ " You are only allowed one auction at a time");
 		} 
+		return false;
+	}
+	
+	public boolean requestBid(Bidder theBidder, int theItemID, double theBidAmount, int theAuctionID)
+	{
+		for (Auction a : myAuctionList)
+		{
+			if (a.getMyID() == theAuctionID)
+			{
+				if (a.getItem(theItemID).isValidBid(theBidAmount))
+				{
+					theBidder.addBid(new Bid(theBidder.getMyName(), theItemID, theBidAmount, theAuctionID));
+					return true;
+				}
+			}
+		}
+		
 		return false;
 	}
 	
@@ -59,6 +79,17 @@ public class Calendar {
 	
 	public Collection<Auction> getAllAuctions() {
 		return myAuctionList;		
+	}
+	
+	public Auction getAuction(int theAuctionID)
+	{
+		Auction auction = null;
+		for (Auction a : myAuctionList)
+		{
+			if (a.getMyID() == theAuctionID)
+				auction = a;
+		}
+		return auction;
 	}
 	
 //	public boolean updateAuction(String theNPO){
