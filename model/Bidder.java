@@ -86,8 +86,14 @@ public class Bidder extends User implements Serializable{
 	/**
 	 * @param myBid the Bid to set
 	 */
-	public void addBid(Bid myBid) {
+	public boolean addBid(Bid myBid) {
+		for (Bid b : myBids)
+		{
+			if (b.getMyItemID() == myBid.getMyItemID())
+				return false;
+		}
 		myBids.add(myBid);
+		return true;
 	}
 
 }
