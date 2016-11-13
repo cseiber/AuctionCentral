@@ -109,11 +109,6 @@ public class Calendar {
 		return false;
 	}
 	
-	public int getTotalAuctionCount()
-	{
-		return myAuctionList.size();
-	}
-	
 	public int getAuctionDayCount(LocalDate theDate)
 	{
 		int count = 0;

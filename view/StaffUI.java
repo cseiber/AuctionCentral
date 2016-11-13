@@ -22,7 +22,7 @@ public class StaffUI {
 	public static void welcomeScreen(Staff theUser, Calendar theCalendar) {
 		curStaff = theUser;
 		myCalendar = theCalendar;
-		System.out.println("You are now logged in as: " + curStaff.getMyName());
+		System.out.println("You are logged in as: " + curStaff.getMyName());
 		System.out.println("Welcome " + curStaff.getMyName() + ", what would you like to do?");
 		while (choice != 1 && choice != 2) {
 			System.out.println("");
@@ -32,9 +32,38 @@ public class StaffUI {
 			System.out.println(">>");
 			choice = sc.nextInt();
 			switch (choice) {
-			case 1:	showAuctions(); break;
-			case 2: System.out.println("You have been logged out of the System"); break;
-			default: System.out.println("Please choose within the range provided");
+			case 1:
+				showAuctions();
+				break;
+			case 2:
+				System.out.println("You have been logged out of the System");
+				break;
+			default:
+				System.out.println("Please choose within the range provided!");
+			}
+		}
+
+	}
+	
+	private static void welcomeScreen() {
+		System.out.println("You are logged in as: " + curStaff.getMyName());
+		System.out.println("Welcome " + curStaff.getMyName() + ", what would you like to do?");
+		while (choice != 1 && choice != 2) {
+			System.out.println("");
+			System.out.println("1. View all upcoming auctions");
+			System.out.println("2. Log out and return to main menu.");
+			System.out.println("");
+			System.out.println(">>");
+			choice = sc.nextInt();
+			switch (choice) {
+			case 1:
+				showAuctions();
+				break;
+			case 2:
+				System.out.println("You have been logged out of the System");
+				break;
+			default:
+				System.out.println("Please choose within the range provided!");
 			}
 		}
 
@@ -49,53 +78,78 @@ public class StaffUI {
 		int[][] days = new int[35][2];
 		int curDay = LocalDateTime.now().getDayOfMonth();
 		int dayOfWeek = LocalDateTime.now().getDayOfWeek().getValue();
-		//System.out.println((dayOfWeek)%7);
 		int count = 0;
-		for (int i = curDay; count < 35; i++ )
-		{
+		int totalAuctions = 0;
+		for (int i = curDay; count < 35; i++) {
 			if ((count < 7 && count < dayOfWeek % 7 + 1) || count > numDays)
 				days[count][0] = 0;
-			else
-			{
+			else {
 				if (!nextMonth)
 					date = LocalDate.of(now.getYear(), now.getMonthValue(), i);
 				else
 					date = LocalDate.of(now.getYear(), now.getMonthValue() + 1, i);
-				
+
 				days[count][0] = i;
 				days[count][1] = myCalendar.getAuctionDayCount(date);
-				if (i >= numDays)
-				{
+				totalAuctions += days[count][1];
+
+				if (i >= numDays) {
 					i = 0;
 					nextMonth = true;
 				}
 			}
 			count++;
 		}
-		
+
 		count = 0;
+		System.out.println("Auction Central Calendar View");
+		System.out.println("Logged in User: " + curStaff.getMyName());
+		System.out.println("");
+		System.out.println("Hello " + curStaff.getMyName() + ", here are the days with upcoming auctions");
+		System.out.println("Total upcoming auctions: " + totalAuctions);
+		System.out.println("");
+		System.out.println("");
 		System.out.println("    Su\t      M\t       T\tW\tTh\t  F\t   Sa");
-		for (int i = 0; i < 35; i++)
-		{
+		for (int i = 0; i < 35; i++) {
 			int day = days[i][0];
 			int auctions = days[i][1];
 			if (day == 0)
 				sb.append("|    :   ");
-			else
-			{
+			else {
 				if (day < 10)
 					sb.append("| 0" + day + " : " + auctions + " ");
 				else
 					sb.append("| " + day + " : " + auctions + " ");
 			}
-			if (i%7 == 6)
-			{
+			if (i % 7 == 6) {
 				sb.append("|");
 				System.out.println(sb.toString());
 				sb.setLength(0);
 			}
 		}
+		choice = 0;
+		while (choice != 1 && choice != 2) {
+			System.out.println("");
+			System.out.println("");
+			System.out.println("What would you like to do " + curStaff.getMyName() + "?");
+			System.out.println("");
+			System.out.println("1. Return to Staff Menu");
+			System.out.println("2. Log out and return to main menu");
+			System.out.println("");
+			System.out.println(">>");
+			choice = sc.nextInt();
+			switch (choice) {
+			case 1:
+				welcomeScreen();
+				break;
+			case 2:
+				System.out.println("You have been logged out of the System");
+				break;
+			default:
+				System.out.println("Please choose within the range provided!");
+			}
+		}
 
 	}
-	
+
 }
