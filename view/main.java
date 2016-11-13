@@ -111,8 +111,8 @@ public class main {
 		choice = sc.nextInt();
 		
 		switch (choice) {
-		case 1:	loginScreen();
-		case 2: registrationScreen();
+		case 1:	loginScreen(); break;
+		case 2: registrationScreen(); break;
 		case 3: System.exit(0);
 		default: System.out.println("Please choose within the range provided"); welcomeScreen();
 		}
@@ -148,13 +148,21 @@ public class main {
 				
 				choice = sc.nextInt();
 				switch (choice) {
-				case 1:	loginScreen();
-				case 2: registrationScreen();
-				case 3: welcomeScreen();
+				case 1:	loginScreen(); break;
+				case 2: registrationScreen(); break;
+				case 3: welcomeScreen(); break;
 				default: System.out.println("Please choose within the range provided");
 				}
 			}
 		}
+		
+		switch (curUser.getUserType()) {
+		case "Staff":	StaffUI.welcomeScreen(); break;
+		case "NPO": NPOUI.welcomeScreen(); break;
+		case "Bidder": BidderUI.welcomeScreen(); break;
+		default: System.out.println("Please choose within the range provided");
+		}
+		
 		
 	}
 	
@@ -202,9 +210,9 @@ public class main {
 			System.out.println("3. Main Menu");
 			choice = sc.nextInt();
 			switch (choice) {
-			case 1:	registrationCompleteStaffScreen(uName, name);
-			case 2: registrationScreen();
-			case 3: welcomeScreen();
+			case 1:	registrationCompleteStaffScreen(uName, name); break;
+			case 2: registrationScreen(); break;
+			case 3: welcomeScreen(); break;
 			default: System.out.println("Please choose within the range provided");
 			}
 		}
