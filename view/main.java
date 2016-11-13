@@ -18,6 +18,7 @@ import model.AuctionDate;
 import model.Calendar;
 import model.Item;
 import model.NPO;
+import model.Staff;
 import model.User;
 
 /**
@@ -28,20 +29,25 @@ public class main {
 	
 	private static Calendar myCalendar;
 	Scanner sc = new Scanner(System.in);
-	private Collection<User> userList;
-	User curUser;
+	private ArrayList<User> userList  = new ArrayList();
+	User curUser = new User();
 	int choice;
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Collection <Auction> auctionList = deSerializeAuction();
-		Collection <User> userList = deSerializeUser();
+	
+		main UI = new main();
 		
-		myCalendar = new Calendar(auctionList);
-
-		System.out.println(((ArrayList<Auction>)myCalendar.getAllAuctions()).get(1).toString());
+		UI.welcomeScreen();
+		
+//		Collection <Auction> auctionList = deSerializeAuction();
+//		Collection <User> userList = deSerializeUser();
+//		
+//		myCalendar = new Calendar(auctionList);
+//
+//		System.out.println(((ArrayList<Auction>)myCalendar.getAllAuctions()).get(1).toString());
 
 	}
 	
@@ -108,7 +114,7 @@ public class main {
 		case 1:	loginScreen();
 		case 2: registrationScreen();
 		case 3: System.exit(0);
-		default: System.err.println("Please choose within the range provided"); welcomeScreen();
+		default: System.out.println("Please choose within the range provided"); welcomeScreen();
 		}
 	}
 	
@@ -120,7 +126,7 @@ public class main {
 		System.out.println("");
 		System.out.println("");
 		System.out.println(">>");
-		String userName = sc.nextLine();
+		String userName = sc.next();
 		
 		for (User u : userList)
 		{
@@ -129,19 +135,88 @@ public class main {
 		}
 		if (curUser == null)
 		{
-			System.err.println("User not found");
-			System.out.println("1. Try again");
-			System.out.println("2. Register");
-			choice = sc.nextInt();
-			switch (choice) {
-			case 1:	loginScreen();
-			case 2: registrationScreen();
-			case 3: System.exit(0);
-			default: System.err.println("Please choose within the range provided"); welcomeScreen();
+			System.out.println("User not found");
+			System.out.println("");
+			while (true)
+			{
+				System.out.println("1. Try again");
+				System.out.println("2. Register");
+				System.out.println("3. Main Menu");
+				System.out.println(">>");
+				
+				choice = sc.nextInt();
+				switch (choice) {
+				case 1:	loginScreen();
+				case 2: registrationScreen();
+				case 3: welcomeScreen();
+				default: System.out.println("Please choose within the range provided");
+				}
 			}
 		}
 		
 	}
+	
+	public void registrationScreen()
+	{
+		System.out.println("Auction Central Registration");
+		System.out.println("");
+		System.out.println("What type of user do you want to register as?");
+		System.out.println("");
+		while (true)
+		{
+			System.out.println("1. Register as Auction Central Staff member");
+			System.out.println("2. Register as a Non Profit Representative");
+			System.out.println("3. Register as a Bidder");
+			System.out.println("4. Back to Main Menu");
+			choice = sc.nextInt();
+			switch (choice) {
+			case 1:	registerStaffScreen();
+//			case 2: registerNPOScreen();
+//			case 3: registerBidderScreen();
+//			case 4: welcomeScreen();
+			default: System.out.println("Please choose within the range provided");
+			}
+		}
+	}
+	
+	public void registerStaffScreen()
+	{
+		System.out.println("Welcome to Auction Central Staff Registration");
+		System.out.println("Please enter your information below");
+		System.out.println("");
+		System.out.println("Enter a user name: ");
+		String uName = sc.next();
+		System.out.println("Enter your name: ");
+		String name = sc.next();
+		System.out.println("You have entered the following information");
+		System.out.println("\tUsername: " + uName);
+		System.out.println("\tName:\t" + name);
+		System.out.println("Is this corrent?");
+		while (true)
+		{
+			System.out.println("");
+			System.out.println("1. Yes please register me");
+			System.out.println("2. No, Try again");
+			System.out.println("3. Main Menu");
+			choice = sc.nextInt();
+			switch (choice) {
+			case 1:	registrationCompleteStaffScreen(uName, name);
+			case 2: registrationScreen();
+			case 3: welcomeScreen();
+			default: System.out.println("Please choose within the range provided");
+			}
+		}
+	}
+	
+	public void registrationCompleteStaffScreen(String userName, String name)
+	{
+		userList.add(new Staff(userName.trim(), name.trim()));
+		System.out.println("Congratulations you have successfully registered on Auction Central");
+		welcomeScreen();
+	}
+	
+	
+	
 	
 //	public static void printDate(){
 //		Item myItem1 = new Item("Banana", "Good", "Small", 15);

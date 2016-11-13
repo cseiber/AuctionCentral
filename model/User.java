@@ -19,7 +19,7 @@ public class User implements Serializable {
 	
 	String myUserType;
 	
-	Collection<User> myUserList = new ArrayList<User>();;
+	public User() {};
 	
 	public User(String theUserName, String theName, String theUserType) {
 		myUserName = theUserName;
