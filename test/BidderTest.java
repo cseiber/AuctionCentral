@@ -33,5 +33,32 @@ public class BidderTest {
 		theBidder.addBid(theBid);
 		assertFalse(theBidder.addBid(theBid));
 	}
+	/**
+	 * Test method for {@link model.Bidder#theBidder.addBid(theBid)}.
+	 */
+	@Test
+	public void testAddBidWhenNoBidYet() {
+		Bid theBid = new Bid("theBidderName", 1234,  100.00, 4321);
+		Bidder theBidder = new Bidder("TheBidder", "Bidder", "theAddress", "thePhone", "theEmail", "thePaymentInfo");
+		assertTrue(theBidder.addBid(theBid));
+	}
+	/**
+	 * Test method for {@link model.Bidder#theBidder.addBid(theBid)}.
+	 */
+	@Test
+	public void testAddBidZeroDollars() {
+		Bid theBid = new Bid("theBidderName", 1234,  0.00, 4321);
+		Bidder theBidder = new Bidder("TheBidder", "Bidder", "theAddress", "thePhone", "theEmail", "thePaymentInfo");
+		assertFalse(theBidder.addBid(theBid));
+	}
+	/**
+	 * Test method for {@link model.Bidder#theBidder.addBid(theBid)}.
+	 */
+	@Test
+	public void testAddBidNegativeDollars() {
+		Bid theBid = new Bid("theBidderName", 1234,  -1.00, 4321);
+		Bidder theBidder = new Bidder("TheBidder", "Bidder", "theAddress", "thePhone", "theEmail", "thePaymentInfo");
+		assertFalse(theBidder.addBid(theBid));
+	}
 
 }
