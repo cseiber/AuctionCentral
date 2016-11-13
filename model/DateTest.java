@@ -26,8 +26,11 @@ public class DateTest {
 				if (i >= numDays)
 					i = 0;
 			}
+			days[count][1] = 1;
 			count++;
 		}
+		
+		//this is just testing to be sure the days are being stored properly
 		for (int[] a : days)
 		{
 			System.out.println(a[0]);
@@ -38,14 +41,15 @@ public class DateTest {
 		for (int i = 0; i < 35; i++)
 		{
 			int day = days[i][0];
+			int auctions = days[i][1];
 			if (day == 0)
 				sb.append("|    :   ");
 			else
 			{
 				if (day < 10)
-					sb.append("| 0" + day + " :   ");
+					sb.append("| 0" + day + " : " + auctions + " ");
 				else
-					sb.append("| " + day + " :   ");
+					sb.append("| " + day + " : " + auctions + " ");
 			}
 			if (i%7 == 6)
 			{
