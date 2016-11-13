@@ -115,7 +115,7 @@ public class main {
 		switch (choice) {
 		case 1:	loginScreen(); break;
 		case 2: registrationScreen(); break;
-		case 3: System.exit(0);
+		case 3: System.out.println("Thank you for using Auction Central! Have a good day!"); System.exit(0);
 		default: System.out.println("Please choose within the range provided"); welcomeScreen();
 		}
 	}
