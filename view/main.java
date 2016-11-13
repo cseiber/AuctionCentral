@@ -19,6 +19,7 @@ import model.Calendar;
 import model.Item;
 import model.NPO;
 import model.Staff;
+import model.Bidder;
 import model.User;
 
 /**
@@ -130,7 +131,7 @@ public class main {
 		
 		for (User u : userList)
 		{
-			System.out.println(u.getMyUserName().equals(userName));
+			//System.out.println(u.getMyUserName().equals(userName));
 			if (u.getMyUserName().equals(userName))
 				curUser = u;
 		}
@@ -157,9 +158,9 @@ public class main {
 		}
 		
 		switch (curUser.getUserType()) {
-		case "Staff":	StaffUI.welcomeScreen(); break;
-		case "NPO": NPOUI.welcomeScreen(); break;
-		case "Bidder": BidderUI.welcomeScreen(); break;
+//		case "Staff":	StaffUI.welcomeScreen(); break;
+//		case "NPO": NPOUI.welcomeScreen(); break;
+		case "Bidder": BidderUI.welcomeScreen((Bidder) curUser); break;
 		default: System.out.println("Please choose within the range provided");
 		}
 		
@@ -182,13 +183,66 @@ public class main {
 			switch (choice) {
 			case 1:	registerStaffScreen();
 //			case 2: registerNPOScreen();
-//			case 3: registerBidderScreen();
+			case 3: registerBidderScreen();
 			case 4: welcomeScreen();
 			default: System.out.println("Please choose within the range provided");
 			}
 		}
 	}
-	
+
+	private void registerBidderScreen() {
+		System.out.println("\n\nWelcome to Bidder Registration");
+		System.out.println("Please enter your information below");
+		System.out.println("");
+		System.out.println("Enter a user name: ");
+		String uName = sc.next();
+		System.out.println("Enter your name: ");
+		String name = sc.next();
+		System.out.println("Enter your address: ");
+		String address = sc.next();
+		System.out.println("Enter your phone number: ");
+		String phoneNumber = sc.next();
+		System.out.println("Enter your email address: ");
+		String email = sc.next();
+		System.out.println("Enter your payment information: ");
+		String payInfo = sc.next();
+		
+		
+		
+		System.out.println("You have entered the following information");
+		System.out.println("\tUsername:\t" + uName);
+		System.out.println("\tName:\t\t" + name);
+		System.out.println("\tAddress:\t" + address);
+		System.out.println("\tPhone Number:\t" + phoneNumber);
+		System.out.println("\tEmail Address:\t" + email);
+		System.out.println("\tPayment Info:\t" + payInfo);
+		
+		
+		System.out.println("Is this correct?");
+		while (true)
+		{
+			System.out.println("");
+			System.out.println("1. Yes please register me");
+			System.out.println("2. No, Try again");
+			System.out.println("3. Main Menu");
+			choice = sc.nextInt();
+			switch (choice) {
+			case 1:	registrationCompleteBidderScreen(uName, name, address, phoneNumber, email, payInfo); break;
+			case 2: registrationScreen(); break;
+			case 3: welcomeScreen(); break;
+			default: System.out.println("Please choose within the range provided");
+			}
+		}
+		
+	}
+
+	public void registrationCompleteBidderScreen(String userName, String name, String theAddress, String thePhone, String theEmail, String thePaymentInfo)
+	{
+		userList.add(new Bidder(userName.trim(), name.trim(), theAddress.trim(), thePhone.trim(), theEmail.trim(), thePaymentInfo.trim()));
+		System.out.println("\n\nCongratulations you have successfully registered on Auction Central");
+		welcomeScreen();
+	}
+
 	public void registerStaffScreen()
 	{
 		System.out.println("\n\nWelcome to Auction Central Staff Registration");
@@ -201,7 +255,7 @@ public class main {
 		System.out.println("You have entered the following information");
 		System.out.println("\tUsername: " + uName);
 		System.out.println("\tName:\t" + name);
-		System.out.println("Is this corrent?");
+		System.out.println("Is this correct?");
 		while (true)
 		{
 			System.out.println("");
