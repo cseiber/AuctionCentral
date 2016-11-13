@@ -18,7 +18,7 @@ public class DateTest {
 		int count = 0;
 		for (int i = curDay; count < 35; i++ )
 		{
-			if ((count < 7 && count < dayOfWeek % 7) || count >= numDays)
+			if ((count < 7 && count < dayOfWeek % 7 + 1) || count > numDays)
 				days[count][0] = 0;
 			else
 			{
