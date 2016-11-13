@@ -109,6 +109,22 @@ public class Calendar {
 		return false;
 	}
 	
+	public int getTotalAuctionCount()
+	{
+		return myAuctionList.size();
+	}
+	
+	public int getAuctionDayCount(LocalDate theDate)
+	{
+		int count = 0;
+		for (Auction a : myAuctionList)
+		{
+			if(a.getAuctionDate().toLocalDate().isEqual(theDate))
+				count++;
+		}
+		return count;
+	}
+	
 /*	public boolean hasAuction(String NPO){
 		return true;
 	}*/

@@ -28,7 +28,7 @@ import model.User;
  */
 public class main {
 	
-	private static Calendar myCalendar;
+	private static Calendar myCalendar = new Calendar();
 	Scanner sc = new Scanner(System.in);
 	private ArrayList<User> userList  = new ArrayList();
 	User curUser = new User();

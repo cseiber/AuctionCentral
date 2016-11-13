@@ -1,5 +1,6 @@
 package view;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
 //import java.util.Calendar;
@@ -42,6 +43,8 @@ public class StaffUI {
 	public static void showAuctions() {
 		StringBuilder sb = new StringBuilder();
 		YearMonth now = YearMonth.now();
+		LocalDate date;
+		boolean nextMonth = false;
 		int numDays = now.lengthOfMonth();
 		int[][] days = new int[35][2];
 		int curDay = LocalDateTime.now().getDayOfMonth();
@@ -54,19 +57,21 @@ public class StaffUI {
 				days[count][0] = 0;
 			else
 			{
+				if (!nextMonth)
+					date = LocalDate.of(now.getYear(), now.getMonthValue(), i);
+				else
+					date = LocalDate.of(now.getYear(), now.getMonthValue() + 1, i);
+				
 				days[count][0] = i;
+				days[count][1] = myCalendar.getAuctionDayCount(date);
 				if (i >= numDays)
+				{
 					i = 0;
+					nextMonth = true;
+				}
 			}
-			days[count][1] = 1;
 			count++;
 		}
-		
-		//this is just testing to be sure the days are being stored properly
-//		for (int[] a : days)
-//		{
-//			System.out.println(a[0]);
-//		}
 		
 		count = 0;
 		System.out.println("    Su\t      M\t       T\tW\tTh\t  F\t   Sa");
