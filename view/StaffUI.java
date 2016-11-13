@@ -22,6 +22,7 @@ public class StaffUI {
 	public static void welcomeScreen(Staff theUser, Calendar theCalendar) {
 		curStaff = theUser;
 		myCalendar = theCalendar;
+		System.out.println("Auction Central Main Staff View");
 		System.out.println("You are logged in as: " + curStaff.getMyName());
 		System.out.println("Welcome " + curStaff.getMyName() + ", what would you like to do?");
 		while (choice != 1 && choice != 2) {
@@ -46,6 +47,7 @@ public class StaffUI {
 	}
 	
 	private static void welcomeScreen() {
+		System.out.println("Auction Central Main Staff View");
 		System.out.println("You are logged in as: " + curStaff.getMyName());
 		System.out.println("Welcome " + curStaff.getMyName() + ", what would you like to do?");
 		while (choice != 1 && choice != 2) {
