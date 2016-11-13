@@ -20,6 +20,7 @@ public class Auction implements Serializable {
 //	private String contactPhone;
 	private int expectedItems;
 	private String myNotes;
+	private int nextItemID;
 	private Collection<Item> myItemList;
 	
 	public Auction(NPO NPOname, LocalDateTime theDate, int itemCount, String theNotes, int theID){
@@ -126,13 +127,19 @@ public class Auction implements Serializable {
 	
 	
 	// call isEqual() in item method to implement this method.
-	public boolean addItem(Item theItem){
+	public boolean addItem(String theItemName,String theAuctionName, String theDonor,
+			String theCondition, String theSize, String theNote,
+			String theDescription, double theMinBid){
+		String id = Integer.toString(myID) + Integer.toString(nextItemID);
+		int theId = Integer.valueOf(id);
+		Item theItem = new Item(theItemName, theAuctionName, theDonor, theCondition, theSize, theNote, theDescription, theMinBid, theId);
 		for (Item i : myItemList)
 		{
 			if (theItem.isEqual(i))
 				return false;
 		}
 		myItemList.add(theItem);
+		nextItemID++;
 		return true;
 	}
 	
