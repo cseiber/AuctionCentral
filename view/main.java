@@ -158,12 +158,15 @@ public class main {
 		}
 		
 		switch (curUser.getUserType()) {
-//		case "Staff":	StaffUI.welcomeScreen(); break;
+
+		case "Staff":	StaffUI.welcomeScreen(); break;
 //		case "NPO": NPOUI.welcomeScreen(); break;
 		case "Bidder": BidderUI.welcomeScreen((Bidder) curUser); break;
+
 		default: System.out.println("Please choose within the range provided");
 		}
-		
+		curUser = new User();
+		welcomeScreen();
 		
 	}
 	

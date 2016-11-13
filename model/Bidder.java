@@ -1,10 +1,15 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Bidder extends User implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String myAddress;
 	private String myPhone;
 	private String myEmail;
@@ -17,7 +22,8 @@ public class Bidder extends User implements Serializable{
 		myAddress = theAddress;
 		myPhone = thePhone;
 		myEmail = theEmail;
-		myPaymentInfo = thePaymentInfo;		
+		myPaymentInfo = thePaymentInfo;	
+		myBids = new ArrayList<Bid>();
 	}
 	
 	/**
