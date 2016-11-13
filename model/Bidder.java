@@ -17,7 +17,7 @@ public class Bidder extends User implements Serializable{
 		myAddress = theAddress;
 		myPhone = thePhone;
 		myEmail = theEmail;
-		myPaymentInfo = thePaymentInfo;		
+		myPaymentInfo = thePaymentInfo;
 	}
 	
 	/**
