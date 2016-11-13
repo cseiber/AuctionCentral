@@ -159,7 +159,11 @@ public class main {
 		
 		switch (curUser.getUserType()) {
 
+<<<<<<< HEAD
 		case "Staff":	StaffUI.welcomeScreen((Staff) curUser); break;
+=======
+		case "Staff":	StaffUI.welcomeScreen((Staff)curUser); break;
+>>>>>>> 4f5f90b48a5907d3f64a3a18e43b73564fd8dd63
 //		case "NPO": NPOUI.welcomeScreen(); break;
 		case "Bidder": BidderUI.welcomeScreen((Bidder) curUser); break;
 

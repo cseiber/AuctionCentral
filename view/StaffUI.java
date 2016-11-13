@@ -34,8 +34,8 @@ public class StaffUI {
 	}
 
 	public static void showAuctions() {
-		System.out.println("");
-		System.out.println("This is the list of Auctions");
+		System.out.println("  Su\tM\tT\tW\tTh\tF\tSa");
+		//System.out.println("This is the list of Auctions");
 
 	}
 }

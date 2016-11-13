@@ -90,7 +90,7 @@ public class ItemTest {
 	}
 	
 	@Test
-	public void testIsValidBidOnPositiveMinBidPrice() {
+	public void testIsValidBidOnPositiveLessThanMinBidPrice() {
 		
 		assertFalse(myItem.isValidBid(10.00));
 		
