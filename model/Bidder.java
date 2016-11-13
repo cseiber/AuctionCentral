@@ -1,23 +1,29 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Bidder extends User implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String myAddress;
 	private String myPhone;
 	private String myEmail;
 	private String myPaymentInfo;
 	private Collection<Bid> myBids;
 
-	Bidder(String theUserName, String theName, String theAddress, String thePhone, String theEmail, String thePaymentInfo)
+	public Bidder(String theUserName, String theName, String theAddress, String thePhone, String theEmail, String thePaymentInfo)
 	{
 		super(theUserName, theName, "Bidder");
 		myAddress = theAddress;
 		myPhone = thePhone;
 		myEmail = theEmail;
-		myPaymentInfo = thePaymentInfo;		
+		myPaymentInfo = thePaymentInfo;	
+		myBids = new ArrayList<Bid>();
 	}
 	
 	/**
