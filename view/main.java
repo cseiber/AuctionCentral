@@ -33,6 +33,7 @@ public class main {
 	private ArrayList<User> userList  = new ArrayList();
 	User curUser = new User();
 	int choice;
+	//Can you see me now?
 
 	/**
 	 * @param args
