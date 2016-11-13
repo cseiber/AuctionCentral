@@ -1,5 +1,6 @@
 package view;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 import model.Staff;
@@ -7,14 +8,16 @@ import model.Staff;
 public class StaffUI {
 
 	static Staff curStaff;
+	static Calendar myCalendar;
 	static Scanner sc = new Scanner(System.in);
 	static int choice;
 
 	StaffUI() {
 	}
 
-	public static void welcomeScreen(Staff theUser) {
+	public static void welcomeScreen(Staff theUser, Calendar theCalendar) {
 		curStaff = theUser;
+		myCalendar = theCalendar;
 		System.out.println("You are now logged in as: " + curStaff.getMyName());
 		System.out.println("Welcome " + curStaff.getMyName() + ", what would you like to do?");
 		while (choice != 1 && choice != 2) {

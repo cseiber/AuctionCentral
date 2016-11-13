@@ -1,6 +1,7 @@
 package view;
 
 import java.util.Collection;
+import java.util.Scanner;
 
 import model.Bid;
 import model.Bidder;
