@@ -97,7 +97,7 @@ public class main {
 	
 	public void welcomeScreen()
 	{
-		System.out.println("Welcome to Auction Central");
+		System.out.println("\n\nWelcome to Auction Central");
 		System.out.println("Please enter a number from the following options below:");
 		System.out.println("");
 		System.out.println("");
@@ -120,7 +120,7 @@ public class main {
 	
 	public void loginScreen()
 	{
-		System.out.println("Auction Central Log In");
+		System.out.println("\n\nAuction Central Log In");
 		System.out.println("");
 		System.out.println("Please enter your user name below");
 		System.out.println("");
@@ -130,10 +130,12 @@ public class main {
 		
 		for (User u : userList)
 		{
-			if (u.getMyUserName() == userName)
+			System.out.println(u.getMyUserName().equals(userName));
+			if (u.getMyUserName().equals(userName))
 				curUser = u;
 		}
-		if (curUser == null)
+		
+		if (curUser.getMyUserName() == null)
 		{
 			System.out.println("User not found");
 			System.out.println("");
@@ -158,7 +160,7 @@ public class main {
 	
 	public void registrationScreen()
 	{
-		System.out.println("Auction Central Registration");
+		System.out.println("\n\nAuction Central Registration");
 		System.out.println("");
 		System.out.println("What type of user do you want to register as?");
 		System.out.println("");
@@ -173,7 +175,7 @@ public class main {
 			case 1:	registerStaffScreen();
 //			case 2: registerNPOScreen();
 //			case 3: registerBidderScreen();
-//			case 4: welcomeScreen();
+			case 4: welcomeScreen();
 			default: System.out.println("Please choose within the range provided");
 			}
 		}
@@ -181,7 +183,7 @@ public class main {
 	
 	public void registerStaffScreen()
 	{
-		System.out.println("Welcome to Auction Central Staff Registration");
+		System.out.println("\n\nWelcome to Auction Central Staff Registration");
 		System.out.println("Please enter your information below");
 		System.out.println("");
 		System.out.println("Enter a user name: ");
@@ -211,7 +213,7 @@ public class main {
 	public void registrationCompleteStaffScreen(String userName, String name)
 	{
 		userList.add(new Staff(userName.trim(), name.trim()));
-		System.out.println("Congratulations you have successfully registered on Auction Central");
+		System.out.println("\n\nCongratulations you have successfully registered on Auction Central");
 		welcomeScreen();
 	}
 	

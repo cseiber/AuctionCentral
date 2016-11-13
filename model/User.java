@@ -31,14 +31,6 @@ public class User implements Serializable {
 		myName = theName;
 	}
 	
-	public void addUser(User theUser){
-		myUserList.add(theUser);
-	}
-	
-	public Collection<User> getUser(){
-		return myUserList;
-	}
-	
 	public boolean isEqual(User theUser){
 		return myUserName.equals(theUser.getMyUserName());
 	}
