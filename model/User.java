@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * user object
+ * user object 
  * @author
  *
  */

@@ -10,7 +10,7 @@ public class NPO extends User implements Serializable{
 	
 	/**
 	 * NPO user object.
-	 * @param theUserName username of NPO
+	 * @param theUserName username of NPO 
 	 * @param theName name of NPO
 	 */
 	public NPO(String theUserName, String theName){

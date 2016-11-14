@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 /**
- * Item Class hold information of an item.
+ * Item Class hold information of an item. 
  * @author 
  *
  */

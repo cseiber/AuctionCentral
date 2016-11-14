@@ -19,7 +19,7 @@ public class Calendar implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Collection<Auction> myAuctionList;
-	private int nextAuctionID;
+	private int nextAuctionID; 
 	
 	public Calendar(Collection<Auction> theAuction) {
 		myAuctionList = theAuction;
