@@ -21,12 +21,13 @@ public class StaffUI {
 	}
 
 	public static void welcomeScreen(Staff theUser, Calendar theCalendar) {
+		choice = 0;
 		curStaff = theUser;
 		myCalendar = theCalendar;
 		System.out.println("Auction Central Main Staff View");
 		System.out.println("You are logged in as: " + curStaff.getMyName());
 		System.out.println("Welcome " + curStaff.getMyName() + ", what would you like to do?");
-		while (choice != 1 && choice != 2) {
+		while (choice != 1 && choice != 2 && choice != EXIT) {
 			System.out.println("");
 			System.out.println("1. View all upcoming auctions");
 			System.out.println("2. Log out and return to main menu.");
@@ -49,6 +50,7 @@ public class StaffUI {
 	}
 	
 	private static void welcomeScreen() {
+		choice = 0;
 		System.out.println("Auction Central Main Staff View");
 		System.out.println("You are logged in as: " + curStaff.getMyName());
 		System.out.println("Welcome " + curStaff.getMyName() + ", what would you like to do?");
@@ -74,6 +76,7 @@ public class StaffUI {
 	}
 
 	public static void showAuctions() {
+		choice = 0;
 		StringBuilder sb = new StringBuilder();
 		YearMonth now = YearMonth.now();
 		LocalDate date;
