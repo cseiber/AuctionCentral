@@ -1,5 +1,5 @@
 package view;
-
+//match
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
@@ -62,7 +62,7 @@ public class NPOUI {
 		}
 	}
 
-	private static void welcomeScreen() {
+	static void welcomeScreen() {
 		choice = 0;
 		System.out.println("\n\nAuction Central Main NPO View");
 		System.out.println("You are logged in as: " + curNPO.getMyName());

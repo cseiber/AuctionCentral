@@ -1,5 +1,5 @@
 package view;
-
+//match
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
@@ -87,8 +87,8 @@ public class StaffUI {
 		int dayOfWeek = LocalDateTime.now().getDayOfWeek().getValue();
 		int count = 0;
 		int totalAuctions = 0;
-		for (int i = curDay - dayOfWeek; count < 35; i++) {
-			if ((count < 7 && count < dayOfWeek % 7 + 1) || count > numDays + dayOfWeek)
+		for (int i = curDay; count < 35; i++) {
+			if ((count < 7 && count < dayOfWeek % 7 + 1) || count > numDays)
 				days[count][0] = 0;
 			else {
 				if (!nextMonth)
@@ -160,3 +160,4 @@ public class StaffUI {
 	}
 
 }
+

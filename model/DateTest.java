@@ -1,5 +1,5 @@
 package model;
-
+//match
 import java.time.LocalDateTime;
 import java.time.Duration;
 import java.time.Period;
@@ -9,7 +9,7 @@ public class DateTest {
 	public static void main(String[] args) {
 		int curDay = LocalDateTime.now().getDayOfMonth();
 		System.out.println("   Su\t   M\t   T\t   W\t   Th\t   F\t   Sa");
-		System.out.println("|\t|\t|\t|\t|\t|\t|\t|");
+		System.out.println("|" + "[|\t|\t|\t|\t|\t|\t|");
 		System.out.println("|\t|\t|\t|\t|\t|\t|\t|");
 		System.out.println("|\t|\t|\t|\t|\t|\t|\t|");
 		System.out.println("|\t|\t|\t|\t|\t|\t|\t|");
