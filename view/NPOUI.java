@@ -62,7 +62,7 @@ public class NPOUI {
 		}
 	}
 
-	static void welcomeScreen() {
+	private static void welcomeScreen() {
 		choice = 0;
 		System.out.println("\n\nAuction Central Main NPO View");
 		System.out.println("You are logged in as: " + curNPO.getMyName());

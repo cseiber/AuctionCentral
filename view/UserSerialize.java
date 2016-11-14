@@ -7,7 +7,6 @@ import java.io.*;
 import java.util.*;
 
 import model.NPO;
-import model.Bidder;
 import model.User;
 
 /**
@@ -25,18 +24,13 @@ public class UserSerialize {
 
 		try{
 			
-	        FileOutputStream fileOut = new FileOutputStream("userlist.ser");
+	        FileOutputStream fileOut =
+            new FileOutputStream("/Users/phucv/Documents/GitHub/AuctionCentral/userlist.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            
-            for(User user : myUserList){
-            	
-            	out.writeObject(user);
-            }
-            
-            //out.writeObject(myUserList);
+            out.writeObject(myUserList);
             out.close();
             fileOut.close();
-            System.out.printf("userlist.ser");
+            System.out.printf("Serialized data is saved in /AuctionCentral/userlist.ser");
 		}catch(IOException i){
 			i.printStackTrace();
 		}
@@ -44,10 +38,6 @@ public class UserSerialize {
 	}
 	
 	public static void setUserList(Collection<User> myUserList){
-
-//		public Bidder(String theUserName, String theName, String theAddress, String thePhone, String theEmail, String thePaymentInfo)
-		myUserList.add(new Bidder("aaron", "aaron", "address", "phone", "email", "creditcard"));
-		
 		myUserList.add(new NPO ("JamesS", "James Smith"));
 		myUserList.add(new NPO ("MichaelT", "Michael Taylor"));
 		myUserList.add(new NPO ("RobertA", "Robert Anderson"));
