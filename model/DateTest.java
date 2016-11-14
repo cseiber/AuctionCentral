@@ -8,6 +8,14 @@ import java.time.YearMonth;
 public class DateTest {
 
 	public static void main(String[] args) {
+		char ch;
+
+		ch = (char) ((25) + 'a');
+		System.out.println(ch);
+	}
+	
+	public void calendarTest()
+	{
 		StringBuilder sb = new StringBuilder();
 		YearMonth now = YearMonth.now();
 		int numDays = now.lengthOfMonth();
@@ -58,23 +66,6 @@ public class DateTest {
 				sb.setLength(0);
 			}
 		}
-		//System.out.println(days);
-		//System.out.println(curDay);
-//		System.out.println("   Su\t   M\t   T\t   W\t   Th\t   F\t   Sa");
-//		System.out.println("| " + days[0][0] + :"|\t|\t|\t|\t|\t|\t|");
-//		System.out.println("|\t|\t|\t|\t|\t|\t|\t|");
-//		System.out.println("|\t|\t|\t|\t|\t|\t|\t|");
-//		System.out.println("|\t|\t|\t|\t|\t|\t|\t|");
-//		System.out.println("|\t|\t|\t|\t|\t|\t|\t|");
-//		// TODO Auto-generated method stub
-//		LocalDateTime time = LocalDateTime.now();
-//		LocalDateTime otherTime = LocalDateTime.of(2016, 11, 11, 01, 0);
-//		System.out.println(time.toLocalDate().equals(otherTime.toLocalDate()));
-//		Period timeDiff = Period.between(time.toLocalDate(), otherTime.toLocalDate());
-//		//System.out.println(timeDiff.getMonths());
-//		
-//		//System.out.println(time.toString());
-
 	}
 
 }

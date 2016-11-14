@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
@@ -39,64 +40,96 @@ public class main {
 	public static void main(String[] args) {
 
 		main UI = new main();
+		UI.load();
 
+		//UI.preLoad();
 		UI.welcomeScreen();
 
-		// Collection <Auction> auctionList = deSerializeAuction();
-		// Collection <User> userList = deSerializeUser();
-		//
-		// myCalendar = new Calendar(auctionList);
-		//
-		// System.out.println(((ArrayList<Auction>)myCalendar.getAllAuctions()).get(1).toString());
-
 	}
+	//
+	// @SuppressWarnings("unchecked")
+	// public static Collection<Auction> deSerializeAuction() {
+	// Collection<Auction> AuctionList = new ArrayList<Auction>();
+	// try {
+	//
+	// FileInputStream fileIn = new FileInputStream("auctionlist.ser");
+	// ObjectInputStream in = new ObjectInputStream(fileIn);
+	// AuctionList = (Collection<Auction>) in.readObject();
+	// in.close();
+	// fileIn.close();
+	// } catch (IOException i) {
+	// System.out.println("NPO class not found");
+	// i.printStackTrace();
+	// return null;
+	// } catch (ClassNotFoundException c) {
+	// System.out.println("NPO class not found");
+	// c.printStackTrace();
+	// return null;
+	// }
+	// return AuctionList;
+	// }
+	//
+	// @SuppressWarnings("unchecked")
+	// public static Collection<User> deSerializeUser() {
+	// Collection<User> UserList = new ArrayList<User>();
+	// try {
+	//
+	// FileInputStream fileIn = new
+	// FileInputStream("/Users/phucv/Documents/GitHub/AuctionCentral/userlist.ser");
+	// ObjectInputStream in = new ObjectInputStream(fileIn);
+	// UserList = (Collection<User>) in.readObject();
+	// in.close();
+	// fileIn.close();
+	// } catch (IOException i) {
+	// System.out.println("NPO class not found");
+	// i.printStackTrace();
+	// return null;
+	// } catch (ClassNotFoundException c) {
+	// System.out.println("NPO class not found");
+	// c.printStackTrace();
+	// return null;
+	// }
+	// return UserList;
+	// }
+	
+	public void preLoad()
+	{
+		userList.add(new Staff("cseiber", "Carl"));
+		
+		for (int i = 0; i < 26; i++)
+		{
+			char ch;
 
-	@SuppressWarnings("unchecked")
-	public static Collection<Auction> deSerializeAuction() {
-		Collection<Auction> AuctionList = new ArrayList<Auction>();
-		try {
-
-			FileInputStream fileIn = new FileInputStream("auctionlist.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			AuctionList = (Collection<Auction>) in.readObject();
-			in.close();
-			fileIn.close();
-		} catch (IOException i) {
-			System.out.println("NPO class not found");
-			i.printStackTrace();
-			return null;
-		} catch (ClassNotFoundException c) {
-			System.out.println("NPO class not found");
-			c.printStackTrace();
-			return null;
+			ch = (char) ((i) + 'a');
+			userList.add(new NPO("NPO" + ch, Character.toString(ch)));
 		}
-		return AuctionList;
-	}
+		
+		for (int i = 0; i < 26; i++)
+		{
+			char ch;
 
-	@SuppressWarnings("unchecked")
-	public static Collection<User> deSerializeUser() {
-		Collection<User> UserList = new ArrayList<User>();
-		try {
-
-			FileInputStream fileIn = new FileInputStream("/Users/phucv/Documents/GitHub/AuctionCentral/userlist.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			UserList = (Collection<User>) in.readObject();
-			in.close();
-			fileIn.close();
-		} catch (IOException i) {
-			System.out.println("NPO class not found");
-			i.printStackTrace();
-			return null;
-		} catch (ClassNotFoundException c) {
-			System.out.println("NPO class not found");
-			c.printStackTrace();
-			return null;
+			ch = (char) ((i) + 'a');
+			userList.add(new Bidder("Bidder" + ch, Character.toString(ch), "111-1234", "123 Avenue", ch + "@hotmail.com", "CC 12345678"));
 		}
-		return UserList;
+		int count = 20;
+		int month = 11;
+		for ( User u : userList)
+		{
+			if (u.getUserType().equals("NPO"))
+			{
+				myCalendar.addAuction((NPO) u, LocalDateTime.of(2016, month, count, 12, 00), 0, "");
+				if (count >= 30)
+				{
+					count = 0;
+					month = 12;
+				}
+				count++;
+			}
+		}
+		
 	}
 
 	public void welcomeScreen() {
-		load();
 		System.out.println("\n\nWelcome to Auction Central");
 		System.out.println("Please enter a number from the following options below:");
 		System.out.println("");
@@ -367,79 +400,64 @@ public class main {
 
 		return true;
 	}
-	
-	private void saveAndExit()
-	{
-		 try
-	      {
-	         FileOutputStream fileOut =
-	         new FileOutputStream("C:/tmp/Calendar.ser");
-	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
-	         out.writeObject(myCalendar);
-	         out.close();
-	         fileOut.close();
-	         System.out.printf("Serialized data is saved in /tmp/Calendar.ser/n");
-	      }catch(IOException i)
-	      {
-	          i.printStackTrace();
-	      }
-		 
-		 try
-	      {
-	         FileOutputStream fileOut2 =
-	         new FileOutputStream("C:/tmp/Users.ser");
-	         ObjectOutputStream out2 = new ObjectOutputStream(fileOut2);
-	         out2.writeObject(userList);
-	         out2.close();
-	         fileOut2.close();
-	         System.out.printf("Serialized data is saved in /tmp/Users.ser");
-	      }catch(IOException i)
-	      {
-	          i.printStackTrace();
-	      }
-		 
-		 System.exit(0);
+
+	private void saveAndExit() {
+		try {
+			FileOutputStream fileOut = new FileOutputStream("C:/tmp/Calendar.ser");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(myCalendar);
+			out.close();
+			fileOut.close();
+			System.out.printf("Serialized data is saved in /tmp/Calendar.ser\n");
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
+
+		try {
+			FileOutputStream fileOut2 = new FileOutputStream("C:/tmp/Users.ser");
+			ObjectOutputStream out2 = new ObjectOutputStream(fileOut2);
+			out2.writeObject(userList);
+			out2.close();
+			fileOut2.close();
+			System.out.printf("Serialized data is saved in /tmp/Users.ser");
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
+
+		System.exit(0);
 
 	}
-	
-	private void load()
-	{
-		 try
-	      {
-	         FileInputStream fileIn = new FileInputStream("/tmp/Calendar.ser");
-	         ObjectInputStream in = new ObjectInputStream(fileIn);
-	         myCalendar = (Calendar) in.readObject();
-	         in.close();
-	         fileIn.close();
-	      }catch(IOException i)
-	      {
-	         i.printStackTrace();
-	         return;
-	      }catch(ClassNotFoundException c)
-	      {
-	         System.out.println("Calendar class not found");
-	         c.printStackTrace();
-	         return;
-	      }
-		 
-		 try
-	      {
-	         FileInputStream fileIn = new FileInputStream("/tmp/Users.ser");
-	         ObjectInputStream in = new ObjectInputStream(fileIn);
-	         userList = (ArrayList<User>) in.readObject();
-	         in.close();
-	         fileIn.close();
-	      }catch(IOException i)
-	      {
-	         i.printStackTrace();
-	         return;
-	      }catch(ClassNotFoundException c)
-	      {
-	         System.out.println("Employee class not found");
-	         c.printStackTrace();
-	         return;
-	      }
 
+	private void load() {
+		try {
+			FileInputStream fileIn = new FileInputStream("/tmp/Calendar.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			myCalendar = (Calendar) in.readObject();
+			in.close();
+			fileIn.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+			return;
+		} catch (ClassNotFoundException c) {
+			System.out.println("Calendar class not found");
+			c.printStackTrace();
+			return;
+		}
+
+		try {
+			FileInputStream fileIn = new FileInputStream("/tmp/Users.ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			userList = (ArrayList<User>) in.readObject();
+			in.close();
+			fileIn.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+			return;
+		} catch (ClassNotFoundException c) {
+			System.out.println("Employee class not found");
+			c.printStackTrace();
+			return;
+		}
 
 	}
 
