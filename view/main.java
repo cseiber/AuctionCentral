@@ -102,15 +102,9 @@ public class main {
 
 			ch = (char) ((i) + 'a');
 			userList.add(new NPO("NPO" + ch, Character.toString(ch)));
-		}
-		
-		for (int i = 0; i < 26; i++)
-		{
-			char ch;
-
-			ch = (char) ((i) + 'a');
 			userList.add(new Bidder("Bidder" + ch, Character.toString(ch), "111-1234", "123 Avenue", ch + "@hotmail.com", "CC 12345678"));
 		}
+		
 		int count = 20;
 		int month = 11;
 		for ( User u : userList)
