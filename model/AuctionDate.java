@@ -1,5 +1,5 @@
 package model;
-
+//match
 import java.io.Serializable;
 
 public class AuctionDate implements Serializable{
