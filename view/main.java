@@ -95,6 +95,7 @@ public class main {
 	public void preLoad()
 	{
 		userList.add(new Staff("cseiber", "Carl"));
+		userList.add(new Staff("lseiber", "Lindsey"));
 		
 		for (int i = 0; i < 26; i++)
 		{
@@ -118,6 +119,17 @@ public class main {
 					month = 12;
 				}
 				count++;
+			}
+		}
+		
+		for (Auction a : myCalendar.getAllAuctions())
+		{
+			for (int i = 0; i < 10; i++)
+			{
+				char ch;
+
+				ch = (char) ((i) + 'a');
+				a.addItem("Item" + ch, "", "good", "small", "", "", 25);
 			}
 		}
 		

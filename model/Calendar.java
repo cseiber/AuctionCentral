@@ -87,8 +87,11 @@ public class Calendar implements Serializable {
 		Auction auction = null;
 		for (Auction a : myAuctionList)
 		{
-			if (a.getNPO() == theNPO)
+			if (a.getNPO().getMyUserName().equals(theNPO.getMyUserName()))
+			{
 				auction = a;
+				break;
+			}
 		}
 		return auction;
 	}
