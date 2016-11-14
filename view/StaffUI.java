@@ -88,7 +88,7 @@ public class StaffUI {
 		int count = 0;
 		int totalAuctions = 0;
 		for (int i = curDay - dayOfWeek; count < 35; i++) {
-			if ((count < 7 && count < dayOfWeek % 7 + 1) || count > numDays)
+			if ((count < 7 && count < dayOfWeek % 7 + 1) || count > numDays + dayOfWeek)
 				days[count][0] = 0;
 			else {
 				if (!nextMonth)
