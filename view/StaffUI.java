@@ -24,7 +24,7 @@ public class StaffUI {
 		choice = 0;
 		curStaff = theUser;
 		myCalendar = theCalendar;
-		System.out.println("Auction Central Main Staff View");
+		System.out.println("\n\nAuction Central Main Staff View");
 		System.out.println("You are logged in as: " + curStaff.getMyName());
 		System.out.println("Welcome " + curStaff.getMyName() + ", what would you like to do?");
 		while (choice != 1 && choice != 2 && choice != EXIT) {
@@ -51,7 +51,7 @@ public class StaffUI {
 	
 	private static void welcomeScreen() {
 		choice = 0;
-		System.out.println("Auction Central Main Staff View");
+		System.out.println("\n\nAuction Central Main Staff View");
 		System.out.println("You are logged in as: " + curStaff.getMyName());
 		System.out.println("Welcome " + curStaff.getMyName() + ", what would you like to do?");
 		while (choice != 1 && choice != 2 && choice != EXIT) {
@@ -109,7 +109,7 @@ public class StaffUI {
 		}
 
 		count = 0;
-		System.out.println("Auction Central Calendar View");
+		System.out.println("\n\nAuction Central Calendar View");
 		System.out.println("Logged in User: " + curStaff.getMyName());
 		System.out.println("");
 		System.out.println("Hello " + curStaff.getMyName() + ", here are the days with upcoming auctions");

@@ -22,7 +22,7 @@ public class NPOUI {
 		choice = 0;
 		curNPO = theUser;
 		myCalendar = theCalendar;
-		System.out.println("Auction Central Main NPO View");
+		System.out.println("\n\nAuction Central Main NPO View");
 		System.out.println("You are logged in as: " + curNPO.getMyName());
 		System.out.println("Welcome " + curNPO.getMyName() + ", what would you like to do?");
 		while (choice != 1 && choice != 2 && choice != 3 && choice != EXIT) {
@@ -64,7 +64,7 @@ public class NPOUI {
 
 	private static void welcomeScreen() {
 		choice = 0;
-		System.out.println("Auction Central Main NPO View");
+		System.out.println("\n\nAuction Central Main NPO View");
 		System.out.println("You are logged in as: " + curNPO.getMyName());
 		System.out.println("Welcome " + curNPO.getMyName() + ", what would you like to do?");
 		while (choice != 1 && choice != 2 && choice != 3 && choice != EXIT) {
@@ -106,7 +106,7 @@ public class NPOUI {
 
 	public static void auctionRequestScreen() {
 		choice = 0;
-		System.out.println("Auction Central NPO Auction Requests");
+		System.out.println("\n\nAuction Central NPO Auction Requests");
 		System.out.println("You are logged in as: " + curNPO.getMyName());
 		System.out.println("");
 		System.out.println("Welcome " + curNPO.getMyName()
@@ -171,7 +171,7 @@ public class NPOUI {
 
 	public static void auctionCreatedScreen() {
 		choice = 0;
-		System.out.println("Auction Central auction Success View");
+		System.out.println("\n\nAuction Central auction Success View");
 		System.out.println("You are logged in as: " + curNPO.getMyName());
 		System.out.println("Congratulations " + curNPO.getMyName() + "!, your auction was successfully created");
 		System.out.println("");
@@ -205,7 +205,7 @@ public class NPOUI {
 	//public boolean addItem(String theItemName, String theDonor, String theCondition, String theSize, String theNote, String theDescription, double theMinBid){
 	public static void addItemScreen() {
 		choice = 0;
-		System.out.println("Auction Central NPO add inventory");
+		System.out.println("\n\nAuction Central NPO add inventory");
 		System.out.println("You are logged in as: " + curNPO.getMyName());
 		System.out.println("Welcome " + curNPO.getMyName() + ", please enter the following data below:");
 		System.out.println("");
@@ -275,7 +275,7 @@ public class NPOUI {
 	public static void itemConfirmationScreen(String theItemName, String theDonor, String theCondition, String theSize, String theNote, String theDescription, double theMinBid)
 	{
 		choice = 0;
-		System.out.println("Auction Central NPO confirmation");
+		System.out.println("\n\nAuction Central NPO confirmation");
 		System.out.println("You are logged in as: " + curNPO.getMyName());
 		System.out.println("Congratulations " + curNPO.getMyName() + "!, your item was successfully added");
 		System.out.println("Item Name: " + theItemName);
