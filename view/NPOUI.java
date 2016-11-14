@@ -13,17 +13,19 @@ public class NPOUI {
 	static NPO curNPO;
 	static Scanner sc = new Scanner(System.in);
 	static int choice;
+	static int EXIT = 1765456165;
 
 	NPOUI() {
 	}
 
 	public static void welcomeScreen(NPO theUser, Calendar theCalendar) {
+		choice = 0;
 		curNPO = theUser;
 		myCalendar = theCalendar;
 		System.out.println("Auction Central Main NPO View");
 		System.out.println("You are logged in as: " + curNPO.getMyName());
 		System.out.println("Welcome " + curNPO.getMyName() + ", what would you like to do?");
-		while (choice != 1 && choice != 2 && choice != 3) {
+		while (choice != 1 && choice != 2 && choice != 3 && choice != EXIT) {
 			System.out.println("");
 			System.out.println("1. Submit an auction request");
 			System.out.println("2. Add an item to my upcoming auction");
@@ -37,6 +39,7 @@ public class NPOUI {
 					System.out.println(
 							"I am sorry but our records show you currently have an auction scheduled, you can only"
 									+ " have one auction scheduled at a time. Please select another operation.");
+					welcomeScreen();
 				} else
 					auctionRequestScreen();
 				break;
@@ -45,11 +48,13 @@ public class NPOUI {
 					System.out.println(
 							"I am sorry but our records show you currently do not have an auction scheduled, please submit an auction request to begin the "
 									+ "process of scheduling an auction");
+					welcomeScreen();
 				} else
 					addItemScreen();
 				break;
 			case 3:
 				System.out.println("You have been logged out of the System");
+				choice = EXIT;
 				break;
 			default:
 				System.out.println("Please choose within the range provided!");
@@ -62,7 +67,7 @@ public class NPOUI {
 		System.out.println("Auction Central Main NPO View");
 		System.out.println("You are logged in as: " + curNPO.getMyName());
 		System.out.println("Welcome " + curNPO.getMyName() + ", what would you like to do?");
-		while (choice != 1 && choice != 2 && choice != 3) {
+		while (choice != 1 && choice != 2 && choice != 3 && choice != EXIT) {
 			System.out.println("");
 			System.out.println("1. Submit an auction request");
 			System.out.println("2. Add an item to my upcoming auction");
@@ -76,6 +81,7 @@ public class NPOUI {
 					System.out.println(
 							"I am sorry but our records show you currently have an auction scheduled, you can only"
 									+ " have one auction scheduled at a time. Please select another operation.");
+					welcomeScreen();
 				} else
 					auctionRequestScreen();
 				break;
@@ -84,11 +90,13 @@ public class NPOUI {
 					System.out.println(
 							"I am sorry but our records show you currently do not have an auction scheduled, please submit an auction request to begin the "
 									+ "process of scheduling an auction");
+					welcomeScreen();
 				} else
 					addItemScreen();
 				break;
 			case 3:
 				System.out.println("You have been logged out of the System");
+				choice = EXIT;
 				break;
 			default:
 				System.out.println("Please choose within the range provided!");
@@ -114,7 +122,7 @@ public class NPOUI {
 			notes = sc.next();
 		}
 		System.out.println("");
-		while (choice != 1 && choice != 2 && choice != 3) {
+		while (choice != 1 && choice != 2 && choice != 3 && choice != EXIT) {
 			System.out.println("Please enter the following information about when you would like the auction");
 			System.out.println("");
 			System.out.println("The Year (ex: 2015): ");
@@ -143,7 +151,11 @@ public class NPOUI {
 				if (myCalendar.addAuction(curNPO, auctionDate, items, notes))
 					auctionCreatedScreen();
 				else
-					System.out.println("I am sorry but the date you entered is not available, please choose a new date.");
+				{
+					System.out.println("I am sorry but the date you entered is not available, please try again.");
+					auctionRequestScreen();
+				}
+					
 				break;
 			case 2:
 				auctionRequestScreen();
@@ -164,7 +176,7 @@ public class NPOUI {
 		System.out.println("Congratulations " + curNPO.getMyName() + "!, your auction was successfully created");
 		System.out.println("");
 		System.out.println("What would you like to do now " + curNPO.getMyName() + "?");
-		while (choice != 1 && choice != 2) {
+		while (choice != 1 && choice != 2 && choice != EXIT) {
 			System.out.println("");
 			System.out.println("1. Add an item to my upcoming auction");
 			System.out.println("2. Return to the NPO Main Menu..");
@@ -177,6 +189,7 @@ public class NPOUI {
 					System.out.println(
 							"I am sorry but our records show you currently do not have an auction scheduled, please submit an auction request to begin the "
 									+ "process of scheduling an auction");
+					auctionCreatedScreen();
 				} else
 					addItemScreen();
 				break;
@@ -232,7 +245,7 @@ public class NPOUI {
 		System.out.println("Donor: " + donor);
 		System.out.println("Description: " + desc);
 		System.out.println("Comments: " + comments);
-		while (choice != 1 && choice != 2 && choice != 3) {
+		while (choice != 1 && choice != 2 && choice != 3 && choice != EXIT) {
 			System.out.println("");
 			System.out.println("1. Looks good! Please add my item");
 			System.out.println("2. Change item information");
@@ -261,6 +274,7 @@ public class NPOUI {
 	
 	public static void itemConfirmationScreen(String theItemName, String theDonor, String theCondition, String theSize, String theNote, String theDescription, double theMinBid)
 	{
+		choice = 0;
 		System.out.println("Auction Central NPO confirmation");
 		System.out.println("You are logged in as: " + curNPO.getMyName());
 		System.out.println("Congratulations " + curNPO.getMyName() + "!, your item was successfully added");
@@ -273,7 +287,7 @@ public class NPOUI {
 		System.out.println("Comments: " + theNote);
 		System.out.println("");
 		System.out.println("What would you like to do now " + curNPO.getMyName() + "?");
-		while (choice != 1 && choice != 2) {
+		while (choice != 1 && choice != 2 && choice != EXIT) {
 			System.out.println("");
 			System.out.println("1. Add another item to my upcoming auction");
 			System.out.println("2. Return to the NPO Main Menu..");

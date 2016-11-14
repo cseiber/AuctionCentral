@@ -175,6 +175,9 @@ public class main {
 		case "Bidder":
 			BidderUI.welcomeScreen((Bidder) curUser);
 			break;
+		case "NPO":
+			NPOUI.welcomeScreen((NPO) curUser, myCalendar);
+			break;
 
 		default:
 			System.out.println("Please choose within the range provided");
@@ -198,7 +201,8 @@ public class main {
 			switch (choice) {
 			case 1:
 				registerStaffScreen();
-				// case 2: registerNPOScreen();
+			case 2:
+				registerNPOScreen();
 			case 3:
 				registerBidderScreen();
 			case 4:
@@ -286,12 +290,10 @@ public class main {
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
-				if (!checkAvailability(uName))
-				{
+				if (!checkAvailability(uName)) {
 					System.out.println("Sorry that user name is not available, please choose another name");
 					registerStaffScreen();
-				}
-				else
+				} else
 					registrationCompleteStaffScreen(uName, name);
 				break;
 			case 2:
@@ -306,6 +308,56 @@ public class main {
 		}
 	}
 
+	public void registrationCompleteStaffScreen(String userName, String name) {
+		userList.add(new Staff(userName.trim(), name.trim()));
+		System.out.println("\n\nCongratulations you have successfully registered on Auction Central");
+		welcomeScreen();
+	}
+
+	public void registerNPOScreen() {
+		System.out.println("\n\nWelcome to Auction Central NPO Registration");
+		System.out.println("Please enter your information below");
+		System.out.println("");
+		System.out.println("Enter a user name: ");
+		String uName = sc.next();
+		System.out.println("Enter your name: ");
+		String name = sc.next();
+		System.out.println("You have entered the following information");
+		System.out.println("\tUsername: " + uName);
+		System.out.println("\tName:\t" + name);
+		System.out.println("Is this correct?");
+		while (true) {
+			System.out.println("");
+			System.out.println("1. Yes please register me");
+			System.out.println("2. No, Try again");
+			System.out.println("3. Main Menu");
+			choice = sc.nextInt();
+			switch (choice) {
+			case 1:
+				if (!checkAvailability(uName)) {
+					System.out.println("Sorry that user name is not available, please choose another name");
+					registerNPOScreen();
+				} else
+					registrationCompleteNPOScreen(uName, name);
+				break;
+			case 2:
+				registrationScreen();
+				break;
+			case 3:
+				welcomeScreen();
+				break;
+			default:
+				System.out.println("Please choose within the range provided");
+			}
+		}
+	}
+
+	public void registrationCompleteNPOScreen(String userName, String name) {
+		userList.add(new NPO(userName.trim(), name.trim()));
+		System.out.println("\n\nCongratulations you have successfully registered on Auction Central");
+		welcomeScreen();
+	}
+
 	public boolean checkAvailability(String userName) {
 		for (User u : userList) {
 			if (u.getMyUserName().equals(userName))
@@ -313,12 +365,6 @@ public class main {
 		}
 
 		return true;
-	}
-
-	public void registrationCompleteStaffScreen(String userName, String name) {
-		userList.add(new Staff(userName.trim(), name.trim()));
-		System.out.println("\n\nCongratulations you have successfully registered on Auction Central");
-		welcomeScreen();
 	}
 
 	// public static void printDate(){

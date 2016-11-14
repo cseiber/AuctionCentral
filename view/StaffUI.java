@@ -15,6 +15,7 @@ public class StaffUI {
 	static Calendar myCalendar;
 	static Scanner sc = new Scanner(System.in);
 	static int choice;
+	static int EXIT = 1765456165;
 
 	StaffUI() {
 	}
@@ -38,6 +39,7 @@ public class StaffUI {
 				break;
 			case 2:
 				System.out.println("You have been logged out of the System");
+				choice = EXIT;
 				break;
 			default:
 				System.out.println("Please choose within the range provided!");
@@ -50,7 +52,7 @@ public class StaffUI {
 		System.out.println("Auction Central Main Staff View");
 		System.out.println("You are logged in as: " + curStaff.getMyName());
 		System.out.println("Welcome " + curStaff.getMyName() + ", what would you like to do?");
-		while (choice != 1 && choice != 2) {
+		while (choice != 1 && choice != 2 && choice != EXIT) {
 			System.out.println("");
 			System.out.println("1. View all upcoming auctions");
 			System.out.println("2. Log out and return to main menu.");
@@ -130,7 +132,7 @@ public class StaffUI {
 			}
 		}
 		choice = 0;
-		while (choice != 1 && choice != 2) {
+		while (choice != 1 && choice != 2 && choice != EXIT) {
 			System.out.println("");
 			System.out.println("");
 			System.out.println("What would you like to do " + curStaff.getMyName() + "?");
