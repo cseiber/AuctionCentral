@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 
-
+/* The Auction class holds the auction's information and the Items in the auction
+ * @author Seiber, Tran, Gillet, Fitzgerald, Wiklanski
+ * @version 11/14/2016
+ */
 public class Auction implements Serializable {
 
 	/**
@@ -22,7 +25,14 @@ public class Auction implements Serializable {
 	private String myNotes;
 	private int nextItemID;
 	private Collection<Item> myItemList;
-	
+	/**
+	 * an Auction has NPO name, auction date, item count, side notes, and auction ID
+	 * @param NPOname
+	 * @param theDate
+	 * @param itemCount
+	 * @param theNotes
+	 * @param theID
+	 */
 	public Auction(NPO NPOname, LocalDateTime theDate, int itemCount, String theNotes, int theID){
 		this.NPOname = NPOname;
 //		this.contactPerson = contactPerson;
@@ -125,7 +135,18 @@ public class Auction implements Serializable {
 //		myItemList = new ArrayList<Item>();
 //	}
 	
-	
+	/**
+	 * adds an item to myItemList as long as the item has not already been added
+	 * @param theItemName
+	 * @param theAuctionName
+	 * @param theDonor
+	 * @param theCondition
+	 * @param theSize 
+	 * @param theNote
+	 * @param theDescription
+	 * @param theMinBid the minimum bid allowed
+	 * @return return true if item is added and false if the item has already been added to this auction
+	 */
 	// call isEqual() in item method to implement this method.
 	public boolean addItem(String theItemName, String theDonor,
 			String theCondition, String theSize, String theNote,
@@ -142,10 +163,13 @@ public class Auction implements Serializable {
 		nextItemID++;
 		return true;
 	}
-	
+	/**
+	 * searches through item myItemList to find item that matches the given ID
+	 * @param theItemID
+	 * @return the item
+	 */
 	public Item getItem(int theItemID)
 	{
-		
 		Item item = null;
 		for (Item i : myItemList)
 		{
@@ -154,18 +178,22 @@ public class Auction implements Serializable {
 		}
 		return item;
 	}
-
+    /**
+     * 
+     * @return the NPOname
+     */
 	public NPO getNPO(){
 		return NPOname;
 	}
-	
-//	public int getTotalNumberOfItem(){
-//		return myItemList.size();
-//	}
-	
+
+	/**
+	 * 
+	 * @return myItemList
+	 */
 	public Collection<Item> getItemList(){
 		return myItemList;
 	}
+	
 	
 	@Override
 	public String toString(){
