@@ -27,7 +27,7 @@ public class Item implements Serializable {
 		//myItemNumber = theItemNumber;
 	}
 	
-	public Item(String theItemName,String theAuctionName, String theDonor,
+	public Item(String theItemName, String theDonor,
 			String theCondition, String theSize, String theNote,
 			String theDescription, double theMinBid, int theItemNumber){
 		//Item(theItemName, theCondition, theSize, theMinBid);
@@ -40,6 +40,11 @@ public class Item implements Serializable {
 		myMinBid = theMinBid;
 		myItemID = theItemNumber;
 		//This is another comment for Aaron
+	}
+	
+	public boolean isValidMinBidPrice(double thePrice)
+	{
+		return thePrice > 0;
 	}
 
 	

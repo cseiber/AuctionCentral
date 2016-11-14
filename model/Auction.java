@@ -127,12 +127,12 @@ public class Auction implements Serializable {
 	
 	
 	// call isEqual() in item method to implement this method.
-	public boolean addItem(String theItemName,String theAuctionName, String theDonor,
+	public boolean addItem(String theItemName, String theDonor,
 			String theCondition, String theSize, String theNote,
 			String theDescription, double theMinBid){
 		String id = Integer.toString(myID) + Integer.toString(nextItemID);
 		int theId = Integer.valueOf(id);
-		Item theItem = new Item(theItemName, theAuctionName, theDonor, theCondition, theSize, theNote, theDescription, theMinBid, theId);
+		Item theItem = new Item(theItemName, theDonor, theCondition, theSize, theNote, theDescription, theMinBid, theId);
 		for (Item i : myItemList)
 		{
 			if (theItem.isEqual(i))

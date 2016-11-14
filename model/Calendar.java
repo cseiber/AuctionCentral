@@ -81,12 +81,12 @@ public class Calendar {
 		return myAuctionList;		
 	}
 	
-	public Auction getAuction(int theAuctionID)
+	public Auction getAuction(NPO theNPO)
 	{
 		Auction auction = null;
 		for (Auction a : myAuctionList)
 		{
-			if (a.getMyID() == theAuctionID)
+			if (a.getNPO() == theNPO)
 				auction = a;
 		}
 		return auction;

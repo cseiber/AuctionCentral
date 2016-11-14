@@ -96,8 +96,6 @@ public class NPOUI {
 		}
 	}
 
-	// addAuction(NPO theNPO, LocalDateTime theDate, int numItems, String
-	// theNotes)
 	public static void auctionRequestScreen() {
 		choice = 0;
 		System.out.println("Auction Central NPO Auction Requests");
@@ -116,7 +114,7 @@ public class NPOUI {
 			notes = sc.next();
 		}
 		System.out.println("");
-		while (choice != 1 && choice != 2  && choice != 3) {
+		while (choice != 1 && choice != 2 && choice != 3) {
 			System.out.println("Please enter the following information about when you would like the auction");
 			System.out.println("");
 			System.out.println("The Year (ex: 2015): ");
@@ -133,7 +131,7 @@ public class NPOUI {
 			System.out.println("Auction Date: " + auctionDate.toString());
 			System.out.println("Number of Items:" + items);
 			System.out.println("Notes: " + notes);
-			
+
 			System.out.println("1. Looks good! Please submit my request");
 			System.out.println("2. Change Auction information");
 			System.out.println("3. Cancel request and return to the NPO Main Menu.");
@@ -158,11 +156,10 @@ public class NPOUI {
 			}
 		}
 	}
-	
-	public static void auctionCreatedScreen()
-	{
+
+	public static void auctionCreatedScreen() {
 		choice = 0;
-		System.out.println("Auction Central auction Sucess View");
+		System.out.println("Auction Central auction Success View");
 		System.out.println("You are logged in as: " + curNPO.getMyName());
 		System.out.println("Congratulations " + curNPO.getMyName() + "!, your auction was successfully created");
 		System.out.println("");
@@ -192,16 +189,54 @@ public class NPOUI {
 		}
 	}
 
+	//public boolean addItem(String theItemName, String theDonor, String theCondition, String theSize, String theNote, String theDescription, double theMinBid){
 	public static void addItemScreen() {
 		choice = 0;
 		System.out.println("Auction Central NPO add inventory");
 		System.out.println("You are logged in as: " + curNPO.getMyName());
-		System.out.println("Welcome " + curNPO.getMyName() + ", what would you like to do?");
-		while (choice != 1 && choice != 2) {
+		System.out.println("Welcome " + curNPO.getMyName() + ", please enter the following data below:");
+		System.out.println("");
+		System.out.println("Item name: ");
+		String name = sc.next();
+		System.out.println("Item Condition (one of: acceptable, good, very good, like new, new): ");
+		String condition = sc.next();
+		System.out.println("Item Size (one of: small (no dimension is greater than one foot)");
+		System.out.println("medium (at least one dimension is greater than one foot but no dimension is greater than three feet)");
+		System.out.println("large (at least one dimension is greater than three feet)");
+		String size = sc.next();
+		System.out.println("Minimum acceptable bid (positive integer)");
+		double minBid = sc.nextDouble();
+		System.out.println("");
+		System.out.println("Thank you, would you like to enter addtional details now? (y/n)");
+		String ans = sc.next();
+		String donor = "";
+		String desc = "";
+		String comments = "";
+		if (ans.equals("y")) {
+			System.out.println("Who is the donor of this item?");
+			donor = sc.next();
 			System.out.println("");
-			System.out.println("1. Submit an auction request");
-			System.out.println("2. Add an item to my upcoming auction");
-			System.out.println("3. Log out and return to main menu.");
+			System.out.println("Add item description here: ");
+			desc = sc.next();
+			System.out.println("");
+			System.out.println("What additional comments would you like to add to the item?");
+			comments = sc.next();
+		}
+		System.out.println("");
+		System.out.println("");
+		System.out.println("You entered the following information:");
+		System.out.println("Item Name: " + name);
+		System.out.println("Item Condition: " + condition);
+		System.out.println("Item Size: " + size);
+		System.out.println("Minimum acceptable bid: " + minBid);
+		System.out.println("Donor: " + donor);
+		System.out.println("Description: " + desc);
+		System.out.println("Comments: " + comments);
+		while (choice != 1 && choice != 2 && choice != 3) {
+			System.out.println("");
+			System.out.println("1. Looks good! Please add my item");
+			System.out.println("2. Change item information");
+			System.out.println("3. Cancel item add and return to the NPO Main menu.");
 			System.out.println("");
 			System.out.println(">>");
 			choice = sc.nextInt();
@@ -216,6 +251,11 @@ public class NPOUI {
 				System.out.println("Please choose within the range provided!");
 			}
 		}
+	}
+	
+	public static void itemConfirmationScreen(String theItemName, String theDonor, String theCondition, String theSize, String theNote, String theDescription, double theMinBid)
+	{
+		
 	}
 
 }
