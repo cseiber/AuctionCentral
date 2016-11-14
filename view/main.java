@@ -3,15 +3,9 @@
  */
 package view;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Scanner;
+import java.util.*;
 
 import model.Auction;
 import model.AuctionDate;
@@ -23,7 +17,7 @@ import model.Bidder;
 import model.User;
 
 /**
- * @author phuc tran
+ * @author 
  *
  */
 public class main {
@@ -44,6 +38,13 @@ public class main {
 
 		//UI.preLoad();
 		UI.welcomeScreen();
+		
+//		for(User a : userList){
+//			System.out.println(a.getMyUserName());
+//		}
+		//ArrayList<Auction> auction = (ArrayList<Auction>) myCalendar.getAllAuctions();
+		
+		//System.out.println(auction.get(2).toString());
 
 	}
 	//
@@ -144,11 +145,13 @@ public class main {
 		System.out.println("");
 		System.out.println("1. Log In");
 		System.out.println("2. Register");
-		System.out.println("3. Exit");
+		System.out.println("~~Enter 0 or NEGATIVE to Exit");
 		System.out.println("");
-		System.out.println(">>");
+		System.out.print(">> ");
+		
+		checkInput(3);
 		choice = sc.nextInt();
-
+		
 		switch (choice) {
 		case 1:
 			loginScreen();
@@ -156,12 +159,18 @@ public class main {
 		case 2:
 			registrationScreen();
 			break;
-		case 3:
+		default:
 			System.out.println("Thank you for using Auction Central! Have a good day!");
 			saveAndExit();
-		default:
-			System.out.println("Please choose within the range provided");
-			welcomeScreen();
+		}
+	}
+	
+	private void checkInput(int radix){	
+		while(!sc.hasNextInt(radix)){
+			System.out.println("\nPlease choose within the range provided");
+			System.out.println("");
+			System.out.print(">> ");
+			sc.next();	
 		}
 	}
 
@@ -171,7 +180,7 @@ public class main {
 		System.out.println("Please enter your user name below");
 		System.out.println("");
 		System.out.println("");
-		System.out.println(">>");
+		System.out.print(">> ");
 		String userName = sc.next();
 
 		for (User u : userList) {
@@ -187,8 +196,10 @@ public class main {
 				System.out.println("1. Try again");
 				System.out.println("2. Register");
 				System.out.println("3. Main Menu");
-				System.out.println(">>");
-
+				System.out.println("");
+				System.out.print(">> ");
+				
+				checkInput(4);
 				choice = sc.nextInt();
 				switch (choice) {
 				case 1:
@@ -237,6 +248,11 @@ public class main {
 			System.out.println("2. Register as a Non Profit Representative");
 			System.out.println("3. Register as a Bidder");
 			System.out.println("4. Back to Main Menu");
+			System.out.println("");
+			System.out.print(">> ");
+			
+			checkInput(5);
+			
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -257,17 +273,17 @@ public class main {
 		System.out.println("\n\nWelcome to Bidder Registration");
 		System.out.println("Please enter your information below");
 		System.out.println("");
-		System.out.println("Enter a user name: ");
+		System.out.print("Enter a user name: ");
 		String uName = sc.next();
-		System.out.println("Enter your name: ");
+		System.out.print("Enter your name: ");
 		String name = sc.next();
-		System.out.println("Enter your address: ");
+		System.out.print("Enter your address: ");
 		String address = sc.next();
-		System.out.println("Enter your phone number: ");
+		System.out.print("Enter your phone number: ");
 		String phoneNumber = sc.next();
-		System.out.println("Enter your email address: ");
+		System.out.print("Enter your email address: ");
 		String email = sc.next();
-		System.out.println("Enter your payment information: ");
+		System.out.print("Enter your payment information: ");
 		String payInfo = sc.next();
 
 		System.out.println("You have entered the following information");
@@ -284,6 +300,9 @@ public class main {
 			System.out.println("1. Yes please register me");
 			System.out.println("2. No, Try again");
 			System.out.println("3. Main Menu");
+			System.out.println("");
+			System.out.print(">> ");
+			checkInput(4);
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -314,9 +333,9 @@ public class main {
 		System.out.println("\n\nWelcome to Auction Central Staff Registration");
 		System.out.println("Please enter your information below");
 		System.out.println("");
-		System.out.println("Enter a user name: ");
+		System.out.print("Enter a user name: ");
 		String uName = sc.next();
-		System.out.println("Enter your name: ");
+		System.out.print("Enter your name: ");
 		String name = sc.next();
 		System.out.println("You have entered the following information");
 		System.out.println("\tUsername: " + uName);
@@ -327,14 +346,18 @@ public class main {
 			System.out.println("1. Yes please register me");
 			System.out.println("2. No, Try again");
 			System.out.println("3. Main Menu");
+			System.out.println("");
+			System.out.print(">> ");
+			checkInput(4);
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
-				if (!checkAvailability(uName)) {
+				while (!checkAvailability(uName)) {
 					System.out.println("Sorry that user name is not available, please choose another name");
-					registerStaffScreen();
-				} else
-					registrationCompleteStaffScreen(uName, name);
+					System.out.print("Enter another user name: ");
+					uName = sc.next();
+				}
+				registrationCompleteStaffScreen(uName, name);
 				break;
 			case 2:
 				registrationScreen();
@@ -358,9 +381,9 @@ public class main {
 		System.out.println("\n\nWelcome to Auction Central NPO Registration");
 		System.out.println("Please enter your information below");
 		System.out.println("");
-		System.out.println("Enter a user name: ");
+		System.out.print("Enter a user name: ");
 		String uName = sc.next();
-		System.out.println("Enter your name: ");
+		System.out.print("Enter your name: ");
 		String name = sc.next();
 		System.out.println("You have entered the following information");
 		System.out.println("\tUsername: " + uName);
@@ -371,14 +394,17 @@ public class main {
 			System.out.println("1. Yes please register me");
 			System.out.println("2. No, Try again");
 			System.out.println("3. Main Menu");
+			System.out.print(">> ");
+			checkInput(4);
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
-				if (!checkAvailability(uName)) {
+				while (!checkAvailability(uName)) {
 					System.out.println("Sorry that user name is not available, please choose another name");
-					registerNPOScreen();
-				} else
-					registrationCompleteNPOScreen(uName, name);
+					System.out.print("Enter another user name: ");
+					uName = sc.next();
+				}
+				registrationCompleteNPOScreen(uName, name);
 				break;
 			case 2:
 				registrationScreen();
@@ -409,23 +435,23 @@ public class main {
 
 	private void saveAndExit() {
 		try {
-			FileOutputStream fileOut = new FileOutputStream("C:/tmp/Calendar.ser");
+			FileOutputStream fileOut = new FileOutputStream("./Calendar.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(myCalendar);
 			out.close();
 			fileOut.close();
-			System.out.printf("Serialized data is saved in /tmp/Calendar.ser\n");
+			System.out.printf("Serialized data is saved in ./Calendar.ser\n");
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
 
 		try {
-			FileOutputStream fileOut2 = new FileOutputStream("C:/tmp/Users.ser");
+			FileOutputStream fileOut2 = new FileOutputStream("./Users.ser");
 			ObjectOutputStream out2 = new ObjectOutputStream(fileOut2);
 			out2.writeObject(userList);
 			out2.close();
 			fileOut2.close();
-			System.out.printf("Serialized data is saved in /tmp/Users.ser");
+			System.out.printf("Serialized data is saved in ./Users.ser");
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
@@ -436,7 +462,7 @@ public class main {
 
 	private void load() {
 		try {
-			FileInputStream fileIn = new FileInputStream("/tmp/Calendar.ser");
+			FileInputStream fileIn = new FileInputStream("./Calendar.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			myCalendar = (Calendar) in.readObject();
 			in.close();
@@ -451,7 +477,7 @@ public class main {
 		}
 
 		try {
-			FileInputStream fileIn = new FileInputStream("/tmp/Users.ser");
+			FileInputStream fileIn = new FileInputStream("./Users.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			userList = (ArrayList<User>) in.readObject();
 			in.close();
@@ -466,25 +492,5 @@ public class main {
 		}
 
 	}
-
-	// public static void printDate(){
-	// Item myItem1 = new Item("Banana", "Good", "Small", 15);
-	// Item myItem2 = new Item("Banana", "Good", "Small", 15);
-	// Item myItem3 = new Item("Bandadsadas", "Good", "Small", 15);
-	// System.out.println(myItem1.isEqual(myItem2));
-	// System.out.println(myItem1.isEqual(myItem3));
-	// }
-	//
-	//
-	// public static void viewCalendar(){
-	// setup();
-	// AuctionDate date = new AuctionDate(2016,11,3);
-	// ArrayList<Auction> printList = (ArrayList<Auction>)
-	// myCalendar.getAuctionsAfterThisDate(date);
-	// for(Auction a : printList){
-	// System.out.println("--------------------");
-	// System.out.println(a.toString());
-	// }
-	// }
 
 }
