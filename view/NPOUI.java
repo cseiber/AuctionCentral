@@ -242,20 +242,55 @@ public class NPOUI {
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
-				auctionRequestScreen();
+				if (myCalendar.getAuction(curNPO).addItem(name, donor, condition, size, comments, desc, minBid))
+						itemConfirmationScreen(name, donor, condition, size, comments, desc, minBid);
+				else
+				{
+					System.out.println("I am sorry, it appears you already have this item listed in your auction, please try again");
+					addItemScreen();
+				}
 				break;
 			case 2:
-				System.out.println("You have been logged out of the System");
+				addItemScreen();
 				break;
 			default:
-				System.out.println("Please choose within the range provided!");
+				welcomeScreen();
 			}
 		}
 	}
 	
 	public static void itemConfirmationScreen(String theItemName, String theDonor, String theCondition, String theSize, String theNote, String theDescription, double theMinBid)
 	{
-		
+		System.out.println("Auction Central NPO confirmation");
+		System.out.println("You are logged in as: " + curNPO.getMyName());
+		System.out.println("Congratulations " + curNPO.getMyName() + "!, your item was successfully added");
+		System.out.println("Item Name: " + theItemName);
+		System.out.println("Item Condition: " + theCondition);
+		System.out.println("Item Size: " + theSize);
+		System.out.println("Minimum acceptable bid: " + theMinBid);
+		System.out.println("Donor: " + theDonor);
+		System.out.println("Description: " + theDescription);
+		System.out.println("Comments: " + theNote);
+		System.out.println("");
+		System.out.println("What would you like to do now " + curNPO.getMyName() + "?");
+		while (choice != 1 && choice != 2) {
+			System.out.println("");
+			System.out.println("1. Add another item to my upcoming auction");
+			System.out.println("2. Return to the NPO Main Menu..");
+			System.out.println("");
+			System.out.println(">>");
+			choice = sc.nextInt();
+			switch (choice) {
+			case 1:
+				addItemScreen();
+				break;
+			case 2:
+				welcomeScreen();
+				break;
+			default:
+				System.out.println("Please choose within the range provided!");
+			}
+		}
 	}
 
 }
