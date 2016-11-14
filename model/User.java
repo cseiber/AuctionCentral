@@ -4,11 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-/**
- * user object 
- * @author
- *
- */
 public class User implements Serializable {
 	
 	//attributes 
@@ -31,7 +26,6 @@ public class User implements Serializable {
 		myName = theName;
 		myUserType = theUserType;
 	}
-	
 	public User(String theUserName, String theName) {
 		myUserName = theUserName;
 		myName = theName;
@@ -47,10 +41,9 @@ public class User implements Serializable {
 	
 	public String getMyName() {return myName;}
 
-//	public void setUserType(String theUserType){
-//		this.myUserType = theUserType;
-//	}
-	
+	public void setUserType(String theUserType){
+		this.myUserType = theUserType;
+	}
 	public void setMyUserName(String myUserName) {
 		this.myUserName = myUserName;
 	}

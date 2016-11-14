@@ -3,11 +3,7 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-/*
- * The Bidder class manages Bidder information and current bids
- * @author Seiber, Tran, Gillet, Fitzgerald, Wiklanski
- * @version 11/14/2016
- */
+
 public class Bidder extends User implements Serializable{
 
 	/**
@@ -19,15 +15,7 @@ public class Bidder extends User implements Serializable{
 	private String myEmail;
 	private String myPaymentInfo;
 	private Collection<Bid> myBids;
-	/**
-     * a Bidder has user name, name, address, phone, email, and payment info 
-     * @param theUserName
-     * @param theName
-     * @param theAddress
-     * @param thePhone
-     * @param theEmail
-     * @param thePaymentInfo
-     */
+
 	public Bidder(String theUserName, String theName, String theAddress, String thePhone, String theEmail, String thePaymentInfo)
 	{
 		super(theUserName, theName, "Bidder");
@@ -102,7 +90,6 @@ public class Bidder extends User implements Serializable{
 	}
 
 	/**
-	 * checks if bid is valid then adds it if it is
 	 * @param myBid the Bid to set
 	 */
 	public boolean addBid(Bid myBid) {

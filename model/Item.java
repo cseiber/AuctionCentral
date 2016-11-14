@@ -1,14 +1,13 @@
 package model;
 
 import java.io.Serializable;
-/**
- * Item Class hold information of an item. 
- * @author 
- *
- */
+
 public class Item implements Serializable {
+	
 
-
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = -2307887234345780299L;
 	private String myItemName;
 	private String myDonor;
@@ -19,23 +18,19 @@ public class Item implements Serializable {
 	private int myItemID;
 	private double myMinBid;
 	
-	/**
-	 * an Item has name, condition, size, and minimum bid price.
-	 * @param theItemName Item name
-	 * @param theCondition Condition of Item
-	 * @param theSize Size of Item
-	 * @param theMinBid Minimum bid price for the Item.
-	 */
+	
 	public Item(String theItemName,String theCondition, String theSize, double theMinBid /*int theItemNumber*/){
 		myItemName = theItemName;
 		myCondition = theCondition;
 		mySize = theSize;
 		myMinBid = theMinBid;
+		//myItemNumber = theItemNumber;
 	}
 	
 	public Item(String theItemName, String theDonor,
 			String theCondition, String theSize, String theNote,
 			String theDescription, double theMinBid, int theItemNumber){
+		//Item(theItemName, theCondition, theSize, theMinBid);
 		myItemName = theItemName;
 		myDonor = theDonor;
 		myCondition = theCondition;
@@ -46,7 +41,6 @@ public class Item implements Serializable {
 		myItemID = theItemNumber;
 		//This is another comment for Aaron
 	}
-	
 	
 	public boolean isValidMinBidPrice(double thePrice)
 	{
@@ -60,7 +54,7 @@ public class Item implements Serializable {
 	}
 	
 	/**
-	 * @return the Name of item
+	 * @return the myItemName
 	 */
 	public String getMyItemName() {
 		return myItemName;
@@ -75,7 +69,7 @@ public class Item implements Serializable {
 
 
 	/**
-	 * @return the myDonor name
+	 * @return the myDonor
 	 */
 	public String getMyDonor() {
 		return myDonor;
@@ -177,15 +171,21 @@ public class Item implements Serializable {
 		return myItemName;
 	}
 	
-	/**
-	 * compare 2 Items
-	 * @param theOtherItem comparable Item
-	 * @return True if 2 Items are equal.
-	 */
 	public boolean isEqual(Item theOtherItem){
 		return(this.getItemName().equals( theOtherItem.getItemName())
 				&& this.getMyCondition().equals(theOtherItem.getMyCondition())
 				&& this.getMyMinBid() == theOtherItem.getMyMinBid()
 				&& this.getMySize().equals(theOtherItem.getMySize()));
+	}
+	
+	@Override
+	public String toString(){
+		StringBuilder str = new StringBuilder();
+		str.append("Item:\t\t" + myItemName);
+		str.append("\nDescription:\t" + myDescription);
+		str.append("\nCondition:\t" + myCondition);
+		str.append("\nMinimum Bid:\t$" + myMinBid);
+		str.append("\n");
+		return str.toString();
 	}
 }
