@@ -152,13 +152,6 @@ public class Item implements Serializable {
 		return myItemID;
 	}
 
-//	/**
-//	 * @param myItemNumber the myItemNumber to set
-//	 */
-//	public void setMyItemNumber(int myItemNumber) {
-//		this.myItemID = myItemNumber;
-//	}
-
 	/**
 	 * @return the myMinBid
 	 */
@@ -188,4 +181,17 @@ public class Item implements Serializable {
 				&& this.getMyMinBid() == theOtherItem.getMyMinBid()
 				&& this.getMySize().equals(theOtherItem.getMySize()));
 	}
+	
+		
+	@Override
+	public String toString(){
+		StringBuilder str = new StringBuilder();
+		str.append("Item:\t\t" + myItemName);
+		str.append("\nDescription:\t" + myDescription);
+		str.append("\nCondition:\t" + myCondition);
+		str.append("\nMinimum Bid:\t$" + myMinBid);
+		str.append("\n");
+		return str.toString();
+	}
+
 }
