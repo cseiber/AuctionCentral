@@ -1,7 +1,11 @@
 package model;
 
 import java.io.Serializable;
-
+/*
+ * The Bid class holds the information of individual bids
+ * @author Seiber, Tran, Gillet, Fitzgerald, Wiklanski
+ * @version 11/14/2016
+ */
 public class Bid implements Serializable{
 	
 	//attributes
@@ -10,7 +14,13 @@ public class Bid implements Serializable{
 	private int myAuctionID;
 	private int myItemID;
 	private double myBidAmount;
-	
+	/**
+	 * a Bid has bidder name, item ID, bid Amount, and auction ID
+	 * @param theBidderName
+	 * @param theItemID
+	 * @param theBidAmount
+	 * @param theAuctionID
+	 */
 	public Bid(String theBidderName, int theItemID, double theBidAmount, int theAuctionID) {
 		myBidderName = theBidderName;
 		myItemID = theItemID;
