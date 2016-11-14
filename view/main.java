@@ -171,7 +171,7 @@ public class main {
 			break;
 		// case "NPO": NPOUI.welcomeScreen(); break;
 		case "Bidder":
-			BidderUI.welcomeScreen((Bidder) curUser);
+			BidderUI.welcomeScreen((Bidder) curUser, myCalendar);
 			break;
 		case "NPO":
 			NPOUI.welcomeScreen((NPO) curUser, myCalendar);
