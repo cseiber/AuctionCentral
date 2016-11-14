@@ -38,60 +38,7 @@ public class main {
 
 		//UI.preLoad();
 		UI.welcomeScreen();
-		
-//		for(User a : userList){
-//			System.out.println(a.getMyUserName());
-//		}
-		//ArrayList<Auction> auction = (ArrayList<Auction>) myCalendar.getAllAuctions();
-		
-		//System.out.println(auction.get(2).toString());
-
 	}
-	//
-	// @SuppressWarnings("unchecked")
-	// public static Collection<Auction> deSerializeAuction() {
-	// Collection<Auction> AuctionList = new ArrayList<Auction>();
-	// try {
-	//
-	// FileInputStream fileIn = new FileInputStream("auctionlist.ser");
-	// ObjectInputStream in = new ObjectInputStream(fileIn);
-	// AuctionList = (Collection<Auction>) in.readObject();
-	// in.close();
-	// fileIn.close();
-	// } catch (IOException i) {
-	// System.out.println("NPO class not found");
-	// i.printStackTrace();
-	// return null;
-	// } catch (ClassNotFoundException c) {
-	// System.out.println("NPO class not found");
-	// c.printStackTrace();
-	// return null;
-	// }
-	// return AuctionList;
-	// }
-	//
-	// @SuppressWarnings("unchecked")
-	// public static Collection<User> deSerializeUser() {
-	// Collection<User> UserList = new ArrayList<User>();
-	// try {
-	//
-	// FileInputStream fileIn = new
-	// FileInputStream("/Users/phucv/Documents/GitHub/AuctionCentral/userlist.ser");
-	// ObjectInputStream in = new ObjectInputStream(fileIn);
-	// UserList = (Collection<User>) in.readObject();
-	// in.close();
-	// fileIn.close();
-	// } catch (IOException i) {
-	// System.out.println("NPO class not found");
-	// i.printStackTrace();
-	// return null;
-	// } catch (ClassNotFoundException c) {
-	// System.out.println("NPO class not found");
-	// c.printStackTrace();
-	// return null;
-	// }
-	// return UserList;
-	// }
 	
 	public void preLoad()
 	{
