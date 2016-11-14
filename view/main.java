@@ -96,6 +96,7 @@ public class main {
 	}
 
 	public void welcomeScreen() {
+		load();
 		System.out.println("\n\nWelcome to Auction Central");
 		System.out.println("Please enter a number from the following options below:");
 		System.out.println("");
@@ -118,7 +119,7 @@ public class main {
 			break;
 		case 3:
 			System.out.println("Thank you for using Auction Central! Have a good day!");
-			System.exit(0);
+			saveAndExit();
 		default:
 			System.out.println("Please choose within the range provided");
 			welcomeScreen();
@@ -365,6 +366,81 @@ public class main {
 		}
 
 		return true;
+	}
+	
+	private void saveAndExit()
+	{
+		 try
+	      {
+	         FileOutputStream fileOut =
+	         new FileOutputStream("C:/tmp/Calendar.ser");
+	         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+	         out.writeObject(myCalendar);
+	         out.close();
+	         fileOut.close();
+	         System.out.printf("Serialized data is saved in /tmp/Calendar.ser/n");
+	      }catch(IOException i)
+	      {
+	          i.printStackTrace();
+	      }
+		 
+		 try
+	      {
+	         FileOutputStream fileOut2 =
+	         new FileOutputStream("C:/tmp/Users.ser");
+	         ObjectOutputStream out2 = new ObjectOutputStream(fileOut2);
+	         out2.writeObject(userList);
+	         out2.close();
+	         fileOut2.close();
+	         System.out.printf("Serialized data is saved in /tmp/Users.ser");
+	      }catch(IOException i)
+	      {
+	          i.printStackTrace();
+	      }
+		 
+		 System.exit(0);
+
+	}
+	
+	private void load()
+	{
+		 try
+	      {
+	         FileInputStream fileIn = new FileInputStream("/tmp/Calendar.ser");
+	         ObjectInputStream in = new ObjectInputStream(fileIn);
+	         myCalendar = (Calendar) in.readObject();
+	         in.close();
+	         fileIn.close();
+	      }catch(IOException i)
+	      {
+	         i.printStackTrace();
+	         return;
+	      }catch(ClassNotFoundException c)
+	      {
+	         System.out.println("Calendar class not found");
+	         c.printStackTrace();
+	         return;
+	      }
+		 
+		 try
+	      {
+	         FileInputStream fileIn = new FileInputStream("/tmp/Users.ser");
+	         ObjectInputStream in = new ObjectInputStream(fileIn);
+	         userList = (ArrayList<User>) in.readObject();
+	         in.close();
+	         fileIn.close();
+	      }catch(IOException i)
+	      {
+	         i.printStackTrace();
+	         return;
+	      }catch(ClassNotFoundException c)
+	      {
+	         System.out.println("Employee class not found");
+	         c.printStackTrace();
+	         return;
+	      }
+
+
 	}
 
 	// public static void printDate(){

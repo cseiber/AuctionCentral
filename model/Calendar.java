@@ -1,6 +1,7 @@
 package model;
 
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.Collection;
 
 
 
-public class Calendar {
+public class Calendar implements Serializable {
 	
 	private Collection<Auction> myAuctionList;
 	private int nextAuctionID;

@@ -202,7 +202,6 @@ public class NPOUI {
 		}
 	}
 
-	//public boolean addItem(String theItemName, String theDonor, String theCondition, String theSize, String theNote, String theDescription, double theMinBid){
 	public static void addItemScreen() {
 		choice = 0;
 		System.out.println("\n\nAuction Central NPO add inventory");
