@@ -1,5 +1,5 @@
 package model;
-
+//match
 import java.io.Serializable;
 /**
  * Item Class hold information of an item. 
@@ -7,7 +7,7 @@ import java.io.Serializable;
  *
  */
 public class Item implements Serializable {
-
+	
 
 	private static final long serialVersionUID = -2307887234345780299L;
 	private String myItemName;
@@ -47,7 +47,6 @@ public class Item implements Serializable {
 		//This is another comment for Aaron
 	}
 	
-	
 	public boolean isValidMinBidPrice(double thePrice)
 	{
 		return thePrice > 0;
@@ -60,7 +59,7 @@ public class Item implements Serializable {
 	}
 	
 	/**
-	 * @return the Name of item
+	 * @return the myItemName
 	 */
 	public String getMyItemName() {
 		return myItemName;
@@ -75,7 +74,7 @@ public class Item implements Serializable {
 
 
 	/**
-	 * @return the myDonor name
+	 * @return the myDonor
 	 */
 	public String getMyDonor() {
 		return myDonor;
@@ -152,13 +151,6 @@ public class Item implements Serializable {
 		return myItemID;
 	}
 
-//	/**
-//	 * @param myItemNumber the myItemNumber to set
-//	 */
-//	public void setMyItemNumber(int myItemNumber) {
-//		this.myItemID = myItemNumber;
-//	}
-
 	/**
 	 * @return the myMinBid
 	 */
@@ -188,4 +180,16 @@ public class Item implements Serializable {
 				&& this.getMyMinBid() == theOtherItem.getMyMinBid()
 				&& this.getMySize().equals(theOtherItem.getMySize()));
 	}
+	
+	@Override
+	public String toString(){
+		StringBuilder str = new StringBuilder();
+		str.append("Item:\t\t" + myItemName);
+		str.append("\nDescription:\t" + myDescription);
+		str.append("\nCondition:\t" + myCondition);
+		str.append("\nMinimum Bid:\t$" + myMinBid);
+		str.append("\n");
+		return str.toString();
+	}
 }
+

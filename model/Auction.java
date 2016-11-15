@@ -1,5 +1,5 @@
 package model;
-
+//match
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -185,10 +185,7 @@ public class Auction implements Serializable {
 	public NPO getNPO(){
 		return NPOname;
 	}
-	
-//	public int getTotalNumberOfItem(){
-//		return myItemList.size();
-//	}
+
 	/**
 	 * 
 	 * @return myItemList
@@ -197,19 +194,21 @@ public class Auction implements Serializable {
 		return myItemList;
 	}
 	
+	
 	@Override
 	public String toString(){
-		int i = 1;
+//		int i = 1;
 		StringBuilder str = new StringBuilder();
-		str.append("NPO Username: " + NPOname.getMyName());
+		str.append("NPO: " + NPOname.getMyName());
 		str.append("\nAuction date: " + getAuctionDate().toString());
 		str.append("\nTotal number of items: " + myItemList.size());
 		
-			for (Item itm : myItemList)
+		str.append("\n\tItem Number: \tItem Name");
+		
+		for (Item itm : myItemList)
 		{
-			str.append("\n\tItem " + (i) + ": " + 
-					itm.getItemName());
-			i++;
+			str.append("\n\t"+ itm.getMyItemID() + "\t\t" + itm.getItemName());
+//			i++;
 		}
 		str.append("\n");
 		return str.toString();

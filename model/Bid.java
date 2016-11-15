@@ -1,5 +1,5 @@
 package model;
-
+//match
 import java.io.Serializable;
 /*
  * The Bid class holds the information of individual bids
