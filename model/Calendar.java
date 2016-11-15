@@ -21,7 +21,10 @@ public class Calendar implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Collection<Auction> myAuctionList;
 	private int nextAuctionID; 
-	
+	/**
+	 * constructs a calendar with a auction list and auction ID
+	 * @param theAuction
+	 */
 	public Calendar(Collection<Auction> theAuction) {
 		myAuctionList = theAuction;
 		nextAuctionID = 1;
@@ -33,7 +36,7 @@ public class Calendar implements Serializable {
 	
 	// didn't catch the BR : no more than 2 auctions per day.
 	/**
-	 * 
+	 * adds an auction to the calendar if the requested date is valid
 	 * @param theNPO the NPO who request the auction
 	 * @param theDate the Date of the auction
 	 * @param numItems Number of Item
@@ -63,7 +66,7 @@ public class Calendar implements Serializable {
 	}
 	
 	/**
-	 * 
+	 * places a bid for and item as long as the bid is valid
 	 * @param theBidder the bidder 
 	 * @param theItemID the Item (number) that bidder bid on.
 	 * @param theBidAmount bid price
@@ -100,7 +103,7 @@ public class Calendar implements Serializable {
 //	}
 	
 	/**
-	 * 
+	 * get a list of available auctions
 	 * @return all the auctions.
 	 */
 	public Collection<Auction> getAllAuctions() {
@@ -108,7 +111,7 @@ public class Calendar implements Serializable {
 	}
 	
 	/**
-	 * 
+	 * get the auction associated with the NPO
 	 * @param theNPO 
 	 * @return the Auction associate with the NPO
 	 */
@@ -128,7 +131,7 @@ public class Calendar implements Serializable {
 	
 	
 	/**
-	 * 
+	 * deletes an auction
 	 * @param NPO
 	 * @return True if the auction is deleted.
 	 */
@@ -146,7 +149,7 @@ public class Calendar implements Serializable {
 	}
 	
 	/**
-	 * 
+	 * get the date of an auction
 	 * @param theDate
 	 * @return the number of auction in theDate
 	 */
