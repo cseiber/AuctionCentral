@@ -29,6 +29,7 @@ public class Bid implements Serializable{
 	}
 
 	/**
+	 * get the name of the bidder
 	 * @return the myBidderName
 	 */
 	public String getMyBidderName() {
@@ -36,6 +37,7 @@ public class Bid implements Serializable{
 	}
 
 	/**
+	 * set the name of the bidder
 	 * @param myBidderName the myBidderName to set
 	 */
 	public void setMyBidderName(String myBidderName) {
@@ -43,6 +45,7 @@ public class Bid implements Serializable{
 	}
 
 	/**
+	 * get the ID of the auction the bid is for
 	 * @return the myAuctionID
 	 */
 	public int getMyAuctionID() {
@@ -50,6 +53,7 @@ public class Bid implements Serializable{
 	}
 
 	/**
+	 * set the auction ID to this bid
 	 * @param myAuctionID the myAuctionID to set
 	 */
 	public void setMyAuctionID(int myAuctionID) {
@@ -57,6 +61,7 @@ public class Bid implements Serializable{
 	}
 
 	/**
+	 * get the item ID of the item being bid on
 	 * @return the myItemID
 	 */
 	public int getMyItemID() {
@@ -64,6 +69,7 @@ public class Bid implements Serializable{
 	}
 
 	/**
+	 * set the item ID to this bid 
 	 * @param myItemID the myItemID to set
 	 */
 	public void setMyItemID(int myItemID) {
@@ -71,6 +77,7 @@ public class Bid implements Serializable{
 	}
 
 	/**
+	 * get the amount this bit is for
 	 * @return the myBidAmount
 	 */
 	public double getMyBidAmount() {
@@ -78,6 +85,7 @@ public class Bid implements Serializable{
 	}
 
 	/**
+	 * set the amount the of the bid 
 	 * @param myBidAmount the myBidAmount to set
 	 */
 	public void setMyBidAmount(int myBidAmount) {

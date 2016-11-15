@@ -45,24 +45,28 @@ public class Auction implements Serializable {
 	}
 	
 	/**
-	 * @return the nPOname
+	 * get NPO object of an auction
+	 * @return the nPOname 
 	 */
 	public NPO getNPOname() {
 		return NPOname;
 	}
 	/**
+	 * set the NPO object associated with the auction
 	 * @param nPOname the nPOname to set
 	 */
 	public void setNPOname(NPO nPOname) {
 		NPOname = nPOname;
 	}
 	/**
+	 * get the auction ID number
 	 * @return the myID
 	 */
 	public int getMyID() {
 		return myID;
 	}
 	/**
+	 * set the auction ID number
 	 * @param myID the myID to set
 	 */
 	public void setMyID(int myID) {
@@ -70,6 +74,7 @@ public class Auction implements Serializable {
 	}
 	
 	/**
+	 * give the date that the auction is to be held
 	 * @return the auctionDate
 	 */
 	public LocalDateTime getAuctionDate() {
@@ -77,6 +82,7 @@ public class Auction implements Serializable {
 	}
 
 	/**
+	 * set the date for the auction to be held
 	 * @param auctionDate the auctionDate to set
 	 */
 	public void setAuctionDate(LocalDateTime auctionDate) {
@@ -84,6 +90,7 @@ public class Auction implements Serializable {
 	}
 
 	/**
+	 * get the estimated number of items in the auction
 	 * @return the expectedItems
 	 */
 	public int getExpectedItems() {
@@ -91,6 +98,7 @@ public class Auction implements Serializable {
 	}
 
 	/**
+	 * set the number of items that are estimated to be in the auction
 	 * @param expectedItems the expectedItems to set
 	 */
 	public void setExpectedItems(int expectedItems) {
@@ -98,6 +106,7 @@ public class Auction implements Serializable {
 	}
 
 	/**
+	 * get the side notes about the auction
 	 * @return the myNotes
 	 */
 	public String getMyNotes() {
@@ -105,6 +114,7 @@ public class Auction implements Serializable {
 	}
 
 	/**
+	 * enter in some side notes about the auction
 	 * @param myNotes the myNotes to set
 	 */
 	public void setMyNotes(String myNotes) {
@@ -112,6 +122,7 @@ public class Auction implements Serializable {
 	}
 
 	/**
+	 * get the list of items for an auction
 	 * @return the myItemList
 	 */
 	public Collection<Item> getMyItemList() {
@@ -119,6 +130,7 @@ public class Auction implements Serializable {
 	}
 
 	/**
+	 * set a list of items in the auction
 	 * @param myItemList the myItemList to set
 	 */
 	public void setMyItemList(Collection<Item> myItemList) {
@@ -179,7 +191,7 @@ public class Auction implements Serializable {
 		return item;
 	}
     /**
-     * 
+     * get NPO object of an auction
      * @return the NPOname
      */
 	public NPO getNPO(){
