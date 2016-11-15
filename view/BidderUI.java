@@ -9,16 +9,15 @@ import java.util.Scanner;
 import model.Auction;
 import model.Bid;
 import model.Bidder;
-<<<<<<< HEAD
+
 /* The BidderUI class displays bidder options to navigate the system.
  * @author Seiber, Tran, Gillet, Fitzgerald, Wiklanski
  * @version 11/14/2016
  */
-=======
+
 import model.Calendar;
 import model.Item;
 
->>>>>>> 0131568379e32cb61b31f91baaa3f2ee2f1edcc5
 public class BidderUI {
 	
 	static Bidder currentBidder;
@@ -51,7 +50,8 @@ public class BidderUI {
 			System.out.println("3. Log out and return to main menu.");
 
 			System.out.println("");
-			System.out.println(">>");
+			System.out.print(">> ");
+			checkInput();
 			choice = sc.nextInt();
 			switch (choice) {
 
@@ -72,6 +72,17 @@ public class BidderUI {
 			}
 		}
 	}
+	
+	
+	private static void checkInput(){	
+		while(!sc.hasNextInt()){
+			System.out.println("\nPlease choose within the range provided");
+			System.out.println("");
+			System.out.print(">> ");
+			sc.next();	
+		}
+	}
+	
 	/**
 	 * prints list of available auctions to UI
 	 */
@@ -95,7 +106,8 @@ public class BidderUI {
 			System.out.println("1. Bid on an item");
 			System.out.println("2. View your active bids");
 			System.out.println("3. Log out and return to main menu.");
-			System.out.println(">>");
+			System.out.print(">> ");
+			checkInput();
 			choice = sc.nextInt();
 			switch (choice) {
 	
@@ -125,6 +137,7 @@ public class BidderUI {
 		System.out.println("");
 		System.out.println("Enter the item number?");
 		System.out.println(">>");
+		checkInput();
 		itemID = sc.nextInt();
 		
 		for(Auction a : myCalendar.getAllAuctions()){
@@ -132,7 +145,9 @@ public class BidderUI {
 				if(i.getMyItemID() == itemID){
 					System.out.println("Bidding on:");
 					System.out.println("\nItem ID: \tName: \t\tMin Bid: \tCondition: \tdescription: ");
-					System.out.println(a.getItem(itemID));
+					System.out.println(" "+a.getItem(itemID).getMyItemID()+ "\t\t" + a.getItem(itemID).getItemName()+
+							"\t\t" + a.getItem(itemID).getMyMinBid() +"\t\t"+ a.getItem(itemID).getMyCondition() 
+							+"\t"+a.getItem(itemID).getMyDescription());
 					thisAuct = a;
 					found = true;
 				}
@@ -147,6 +162,12 @@ public class BidderUI {
 		System.out.println("");
 		System.out.println("What is your bid?");
 		System.out.println(">>");
+		while(!sc.hasNextDouble()){
+			System.out.println("Please enter a double: ");
+			System.out.println();
+			System.out.print(">> ");
+			sc.next();
+		}
 		bidOffer = sc.nextDouble();
 		
 		while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != EXIT) {
@@ -156,8 +177,8 @@ public class BidderUI {
 			System.out.println("1. Confirm and place your bid");
 			System.out.println("2. Cancel this bid");
 			System.out.println("3. Cancel bid and return to main menu");
-			System.out.println(">>");
-			
+			System.out.print(">> " );
+			checkInput();
 			choice = sc.nextInt();
 			switch (choice) {
 	
@@ -217,8 +238,8 @@ public class BidderUI {
 			System.out.println("2. View your active bids");
 			System.out.println("3. Return to main menu.");
 			System.out.println("4. Log out and return to main menu.");
-			System.out.println(">>");
-			
+			System.out.print(">> ");
+			checkInput();
 			choice = sc.nextInt();
 			switch (choice) {
 
@@ -242,18 +263,4 @@ public class BidderUI {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

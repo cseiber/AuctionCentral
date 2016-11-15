@@ -1,5 +1,5 @@
 /**
- * Matches main from carl
+ * 
  */
 package view;
 
@@ -17,14 +17,14 @@ import model.Bidder;
 import model.User;
 
 /**
- * @author phuc tran
+ * @author 
  *
  */
 public class main {
-	
-	private static Calendar myCalendar;
+
+	protected static Calendar myCalendar = new Calendar();
 	Scanner sc = new Scanner(System.in);
-	private ArrayList<User> userList  = new ArrayList();
+	private ArrayList<User> userList = new ArrayList();
 	User curUser = new User();
 	int choice;
 
@@ -32,13 +32,67 @@ public class main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-	
+
 		main UI = new main();
+		//1
 		UI.load();
-		
-		//UI.preLoad();
+
+		UI.preLoad();
 		UI.welcomeScreen();
+		
+//		for(User a : userList){
+//			System.out.println(a.getMyUserName());
+//		}
+		//ArrayList<Auction> auction = (ArrayList<Auction>) myCalendar.getAllAuctions();
+		
+		//System.out.println(auction.get(2).toString());
+
 	}
+	//
+	// @SuppressWarnings("unchecked")
+	// public static Collection<Auction> deSerializeAuction() {
+	// Collection<Auction> AuctionList = new ArrayList<Auction>();
+	// try {
+	//
+	// FileInputStream fileIn = new FileInputStream("auctionlist.ser");
+	// ObjectInputStream in = new ObjectInputStream(fileIn);
+	// AuctionList = (Collection<Auction>) in.readObject();
+	// in.close();
+	// fileIn.close();
+	// } catch (IOException i) {
+	// System.out.println("NPO class not found");
+	// i.printStackTrace();
+	// return null;
+	// } catch (ClassNotFoundException c) {
+	// System.out.println("NPO class not found");
+	// c.printStackTrace();
+	// return null;
+	// }
+	// return AuctionList;
+	// }
+	//
+	// @SuppressWarnings("unchecked")
+	// public static Collection<User> deSerializeUser() {
+	// Collection<User> UserList = new ArrayList<User>();
+	// try {
+	//
+	// FileInputStream fileIn = new
+	// FileInputStream("/Users/phucv/Documents/GitHub/AuctionCentral/userlist.ser");
+	// ObjectInputStream in = new ObjectInputStream(fileIn);
+	// UserList = (Collection<User>) in.readObject();
+	// in.close();
+	// fileIn.close();
+	// } catch (IOException i) {
+	// System.out.println("NPO class not found");
+	// i.printStackTrace();
+	// return null;
+	// } catch (ClassNotFoundException c) {
+	// System.out.println("NPO class not found");
+	// c.printStackTrace();
+	// return null;
+	// }
+	// return UserList;
+	// }
 	
 	public void preLoad()
 	{
@@ -82,8 +136,8 @@ public class main {
 		}
 		
 	}
-	
-	public void welcomeScreen(){
+
+	public void welcomeScreen() {
 		System.out.println("\n\nWelcome to Auction Central");
 		System.out.println("Please enter a number from the following options below:");
 		System.out.println("");
@@ -94,7 +148,7 @@ public class main {
 		System.out.println("2. Register");
 		System.out.println("~~Enter 0 or NEGATIVE to Exit");
 		System.out.println("");
-		System.out.println(">>");
+		System.out.print(">> ");
 		
 		checkInput(3);
 		choice = sc.nextInt();
@@ -109,9 +163,10 @@ public class main {
 		default:
 			System.out.println("Thank you for using Auction Central! Have a good day!");
 			saveAndExit();
+			System.exit(0);
 		}
 	}
-
+	
 	private void checkInput(int radix){	
 		while(!sc.hasNextInt(radix)){
 			System.out.println("\nPlease choose within the range provided");
@@ -120,31 +175,31 @@ public class main {
 			sc.next();	
 		}
 	}
-	
-	public void loginScreen(){
+
+	public void loginScreen() {
 		System.out.println("\n\nAuction Central Log In");
 		System.out.println("");
 		System.out.println("Please enter your user name below");
 		System.out.println("");
 		System.out.println("");
-		System.out.println(">>");
+		System.out.print(">> ");
 		String userName = sc.next();
-		
-		for (User u : userList){
-			//System.out.println(u.getMyUserName().equals(userName));
+
+		for (User u : userList) {
+			// System.out.println(u.getMyUserName().equals(userName));
 			if (u.getMyUserName().equals(userName))
 				curUser = u;
 		}
-		
-		if (curUser.getMyUserName() == null){
+
+		if (curUser.getMyUserName() == null) {
 			System.out.println("User not found");
 			System.out.println("");
-			while (true)
-			{
+			while (true) {
 				System.out.println("1. Try again");
 				System.out.println("2. Register");
 				System.out.println("3. Main Menu");
-				System.out.println(">>");
+				System.out.println("");
+				System.out.print(">> ");
 				
 				checkInput(4);
 				choice = sc.nextInt();
@@ -163,7 +218,7 @@ public class main {
 				}
 			}
 		}
-		
+
 		switch (curUser.getUserType()) {
 
 		case "Staff":
@@ -182,15 +237,15 @@ public class main {
 		}
 		curUser = new User();
 		welcomeScreen();
-		
+
 	}
-	
-	public void registrationScreen(){
+
+	public void registrationScreen() {
 		System.out.println("\n\nAuction Central Registration");
 		System.out.println("");
 		System.out.println("What type of user do you want to register as?");
 		System.out.println("");
-		while (true){
+		while (true) {
 			System.out.println("1. Register as Auction Central Staff member");
 			System.out.println("2. Register as a Non Profit Representative");
 			System.out.println("3. Register as a Bidder");
@@ -220,19 +275,19 @@ public class main {
 		System.out.println("\n\nWelcome to Bidder Registration");
 		System.out.println("Please enter your information below");
 		System.out.println("");
-		System.out.println("Enter a user name: ");
+		System.out.print("Enter a user name: ");
 		String uName = sc.next();
-		System.out.println("Enter your name: ");
+		System.out.print("Enter your name: ");
 		String name = sc.next();
-		System.out.println("Enter your address: ");
+		System.out.print("Enter your address: ");
 		String address = sc.next();
-		System.out.println("Enter your phone number: ");
+		System.out.print("Enter your phone number: ");
 		String phoneNumber = sc.next();
-		System.out.println("Enter your email address: ");
+		System.out.print("Enter your email address: ");
 		String email = sc.next();
-		System.out.println("Enter your payment information: ");
+		System.out.print("Enter your payment information: ");
 		String payInfo = sc.next();
-		
+
 		System.out.println("You have entered the following information");
 		System.out.println("\tUsername:\t" + uName);
 		System.out.println("\tName:\t\t" + name);
@@ -240,14 +295,14 @@ public class main {
 		System.out.println("\tPhone Number:\t" + phoneNumber);
 		System.out.println("\tEmail Address:\t" + email);
 		System.out.println("\tPayment Info:\t" + payInfo);
-		
+
 		System.out.println("Is this correct?");
-		while (true)
-		{
+		while (true) {
 			System.out.println("");
 			System.out.println("1. Yes please register me");
 			System.out.println("2. No, Try again");
 			System.out.println("3. Main Menu");
+			System.out.println("");
 			System.out.print(">> ");
 			checkInput(4);
 			choice = sc.nextInt();
@@ -265,18 +320,18 @@ public class main {
 				System.out.println("Please choose within the range provided");
 			}
 		}
-		
+
 	}
 
-	public void registrationCompleteBidderScreen(String userName, String name, String theAddress, String thePhone, 
-			String theEmail, String thePaymentInfo)	{
-		userList.add(new Bidder(userName.trim(), name.trim(), theAddress.trim(), thePhone.trim(), 
-				theEmail.trim(), thePaymentInfo.trim()));
+	public void registrationCompleteBidderScreen(String userName, String name, String theAddress, String thePhone,
+			String theEmail, String thePaymentInfo) {
+		userList.add(new Bidder(userName.trim(), name.trim(), theAddress.trim(), thePhone.trim(), theEmail.trim(),
+				thePaymentInfo.trim()));
 		System.out.println("\n\nCongratulations you have successfully registered on Auction Central");
 		welcomeScreen();
 	}
 
-	public void registerStaffScreen(){
+	public void registerStaffScreen() {
 		System.out.println("\n\nWelcome to Auction Central Staff Registration");
 		System.out.println("Please enter your information below");
 		System.out.println("");
@@ -317,22 +372,20 @@ public class main {
 			}
 		}
 	}
-	
-	public void registrationCompleteStaffScreen(String userName, String name)
-	{
+
+	public void registrationCompleteStaffScreen(String userName, String name) {
 		userList.add(new Staff(userName.trim(), name.trim()));
 		System.out.println("\n\nCongratulations you have successfully registered on Auction Central");
-		saveAndExit();
 		welcomeScreen();
 	}
-	
+
 	public void registerNPOScreen() {
 		System.out.println("\n\nWelcome to Auction Central NPO Registration");
 		System.out.println("Please enter your information below");
 		System.out.println("");
-		System.out.println("Enter a user name: ");
+		System.out.print("Enter a user name: ");
 		String uName = sc.next();
-		System.out.println("Enter your name: ");
+		System.out.print("Enter your name: ");
 		String name = sc.next();
 		System.out.println("You have entered the following information");
 		System.out.println("\tUsername: " + uName);
@@ -343,14 +396,17 @@ public class main {
 			System.out.println("1. Yes please register me");
 			System.out.println("2. No, Try again");
 			System.out.println("3. Main Menu");
+			System.out.print(">> ");
+			checkInput(4);
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
-				if (!checkAvailability(uName)) {
+				while (!checkAvailability(uName)) {
 					System.out.println("Sorry that user name is not available, please choose another name");
-					registerNPOScreen();
-				} else
-					registrationCompleteNPOScreen(uName, name);
+					System.out.print("Enter another user name: ");
+					uName = sc.next();
+				}
+				registrationCompleteNPOScreen(uName, name);
 				break;
 			case 2:
 				registrationScreen();
@@ -363,11 +419,10 @@ public class main {
 			}
 		}
 	}
-	
+
 	public void registrationCompleteNPOScreen(String userName, String name) {
 		userList.add(new NPO(userName.trim(), name.trim()));
 		System.out.println("\n\nCongratulations you have successfully registered on Auction Central");
-		saveAndExit();
 		welcomeScreen();
 	}
 
@@ -379,52 +434,51 @@ public class main {
 
 		return true;
 	}
-	
+
 	private void saveAndExit() {
 		try {
-			FileOutputStream fileOut = new FileOutputStream("Calendar.ser");
+			FileOutputStream fileOut = new FileOutputStream("./Calendar.ser");
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			out.writeObject(myCalendar);
 			out.close();
 			fileOut.close();
-			System.out.printf("Serialized data is saved in Calendar.ser\n");
+			System.out.printf("Serialized data is saved in ./Calendar.ser\n");
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
 
 		try {
-			FileOutputStream fileOut2 = new FileOutputStream("Users.ser");
+			FileOutputStream fileOut2 = new FileOutputStream("./Users.ser");
 			ObjectOutputStream out2 = new ObjectOutputStream(fileOut2);
 			out2.writeObject(userList);
 			out2.close();
 			fileOut2.close();
-			System.out.printf("Serialized data is saved in Users.ser");
+			System.out.printf("Serialized data is saved in ./Users.ser");
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
 
-		System.exit(0);
-		
-	}	
+
+	}
 
 	private void load() {
-		try {
-			FileInputStream fileIn = new FileInputStream("Calendar.ser");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			myCalendar = (Calendar) in.readObject();
-			in.close();
-			fileIn.close();
-		} catch (IOException i) {
-			i.printStackTrace();
-			return;
-		} catch (ClassNotFoundException c) {
-			System.out.println("Calendar class not found");
-			c.printStackTrace();
-			return;
-		}
+//		try {
+//			FileInputStream fileIn = new FileInputStream("./Calendar.ser");
+//			ObjectInputStream in = new ObjectInputStream(fileIn);
+//			myCalendar = (Calendar) in.readObject();
+//			in.close();
+//			fileIn.close();
+//		} catch (IOException i) {
+//			i.printStackTrace();
+//			return;
+//		} catch (ClassNotFoundException c) {
+//			System.out.println("Calendar class not found");
+//			c.printStackTrace();
+//			return;
+//		}
 
 		try {
-			FileInputStream fileIn = new FileInputStream("Users.ser");
+			FileInputStream fileIn = new FileInputStream("./Users.ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
 			userList = (ArrayList<User>) in.readObject();
 			in.close();
@@ -437,7 +491,7 @@ public class main {
 			c.printStackTrace();
 			return;
 		}
-		
+
 	}
 
 }
