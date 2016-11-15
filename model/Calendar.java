@@ -15,10 +15,7 @@ import java.util.Collection;
  */
 public class Calendar implements Serializable {
 
-	/**
-	 * 
-	 */
-//	private static final long serialVersionUID = 1L;
+
 	private static final long serialVersionUID = -2370558377553764986L;
 	private Collection<Auction> myAuctionList;
 	private int nextAuctionID; 
@@ -80,6 +77,9 @@ public class Calendar implements Serializable {
 		{
 			if (a.getMyID() == theAuctionID)
 			{
+				if(a.getAuctionDate().isBefore(LocalDateTime.now()) || a.getAuctionDate().isEqual((LocalDateTime.now()))){
+					return false;
+				}
 				if (a.getItem(theItemID).isValidBid(theBidAmount))
 				{
 					theBidder.addBid(new Bid(theBidder.getMyName(), theItemID, theBidAmount, theAuctionID));
@@ -92,16 +92,7 @@ public class Calendar implements Serializable {
 	}
 	
 	
-//	public Collection<Auction> getAuctionsAfterThisDate(AuctionDate theDate) {
-//		//returnList contain all the auctions after the pass in date
-//		Collection<Auction> returnList = new ArrayList<Auction>();
-//		for (Auction curAuction : myAuctionList){
-////			if (curAuction.getAuctionDate().isAfterThisDate(theDate)){
-////				returnList.add(curAuction);
-////			}
-//		}
-//		return returnList;
-//	}
+
 	
 	/**
 	 * get a list of available auctions
