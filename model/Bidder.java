@@ -39,6 +39,7 @@ public class Bidder extends User implements Serializable{
 	}
 	
 	/**
+	 * get the address of the bidder
 	 * @return the myAddress
 	 */
 	public String getMyAddress() {
@@ -46,6 +47,7 @@ public class Bidder extends User implements Serializable{
 	}
 
 	/**
+	 * set the address of the bidder
 	 * @param myAddress the myAddress to set
 	 */
 	public void setMyAddress(String myAddress) {
@@ -53,6 +55,7 @@ public class Bidder extends User implements Serializable{
 	}
 
 	/**
+	 * get the phone number of the bidder
 	 * @return the myPhone
 	 */
 	public String getMyPhone() {
@@ -60,6 +63,7 @@ public class Bidder extends User implements Serializable{
 	}
 
 	/**
+	 * set the phone number of the bidder
 	 * @param myPhone the myPhone to set
 	 */
 	public void setMyPhone(String myPhone) {
@@ -67,6 +71,7 @@ public class Bidder extends User implements Serializable{
 	}
 
 	/**
+	 * get the email of the bidder
 	 * @return the myEmail
 	 */
 	public String getMyEmail() {
@@ -74,6 +79,7 @@ public class Bidder extends User implements Serializable{
 	}
 
 	/**
+	 * set the email of the bidder
 	 * @param myEmail the myEmail to set
 	 */
 	public void setMyEmail(String myEmail) {
@@ -81,6 +87,7 @@ public class Bidder extends User implements Serializable{
 	}
 
 	/**
+	 * get the payment info for the bidder
 	 * @return the myPaymentInfo
 	 */
 	public String getMyPaymentInfo() {
@@ -88,6 +95,7 @@ public class Bidder extends User implements Serializable{
 	}
 
 	/**
+	 * set the payment info for the bidder
 	 * @param myPaymentInfo the myPaymentInfo to set
 	 */
 	public void setMyPaymentInfo(String myPaymentInfo) {
@@ -95,6 +103,7 @@ public class Bidder extends User implements Serializable{
 	}	
 	
 	/**
+	 * get all the bidders bids
 	 * @return the myBids
 	 */
 	public Collection<Bid> getMyBids() {
@@ -102,8 +111,9 @@ public class Bidder extends User implements Serializable{
 	}
 
 	/**
-	 * checks if bid is valid then adds it if it is
+	 * checks if bid is valid then adds it if it is valid
 	 * @param myBid the Bid to set
+	 * @return true if the bid is valid, else false
 	 */
 	public boolean addBid(Bid myBid) {
 		if (myBid.getMyBidAmount() <= 0)

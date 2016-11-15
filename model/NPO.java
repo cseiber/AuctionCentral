@@ -1,5 +1,5 @@
 package model;
-//match
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -67,14 +67,14 @@ public class NPO extends User implements Serializable{
 	 */
 	public boolean isValidAuctionDate(LocalDateTime theAuctionDate){
 		LocalDateTime now = LocalDateTime.now(); //today
-		Period prevAuctionTime = Period.between(lastAuctionDate.toLocalDate(), theAuctionDate.toLocalDate()); // last auction date
-		Period futureTimes = Period.between(now.toLocalDate(), theAuctionDate.toLocalDate()); // auction date to be added
+		Period prevAuctionTime = Period.between(lastAuctionDate.toLocalDate(), theAuctionDate.toLocalDate()); // period from last auction date to this auction date
+		Period futureTimes = Period.between(now.toLocalDate(), theAuctionDate.toLocalDate()); // period from now to this auction date to be added
 		
 		if (prevAuctionTime.getYears() < 1)
 		{
 			return false;
 		}
-		if (futureTimes.getMonths() > 1)
+		if (futureTimes.getMonths() > 1 || futureTimes.getYears() > 0)
 		{			
 			return false;
 		}

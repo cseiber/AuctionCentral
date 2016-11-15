@@ -9,9 +9,16 @@ import java.util.Scanner;
 import model.Auction;
 import model.Bid;
 import model.Bidder;
+<<<<<<< HEAD
+/* The BidderUI class displays bidder options to navigate the system.
+ * @author Seiber, Tran, Gillet, Fitzgerald, Wiklanski
+ * @version 11/14/2016
+ */
+=======
 import model.Calendar;
 import model.Item;
 
+>>>>>>> 0131568379e32cb61b31f91baaa3f2ee2f1edcc5
 public class BidderUI {
 	
 	static Bidder currentBidder;
@@ -22,13 +29,17 @@ public class BidderUI {
 	
 	BidderUI(){
 	}
-	
+
+	/**
+	 * displays the welcome screen for a Bidder
+	 * @param bidder
+	 */
 	public static void welcomeScreen(Bidder bidder, Calendar theCalendar){
 		
 		choice = 0;
 		currentBidder = bidder;
 		myCalendar = theCalendar;
-		
+
 		System.out.println("You are now logged in as: " + currentBidder.getMyName());
 		System.out.println("Welcome " + currentBidder.getMyName() + ", what would you like to do?");
 		
@@ -61,6 +72,9 @@ public class BidderUI {
 			}
 		}
 	}
+	/**
+	 * prints list of available auctions to UI
+	 */
 	public static void showAuctions() {
 
 		choice = 0;

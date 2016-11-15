@@ -3,8 +3,8 @@ package model;
 import java.io.Serializable;
 /**
  * Item Class hold information of an item. 
- * @author 
- *
+ * @author Seiber, Tran, Gillet, Fitzgerald, Wiklanski
+ * @version 11/14/2016 
  */
 public class Item implements Serializable {
 	
@@ -45,20 +45,28 @@ public class Item implements Serializable {
 		myMinBid = theMinBid;
 		myItemID = theItemNumber;
 	}
-	
+	/**
+	 * The isValidMinBidPrice checks to see if the bid is more than zero 
+	 * @param thePrice the amount of the bid
+	 * @return true if the bid is over zero dollars, else return false
+	 */
 	public boolean isValidMinBidPrice(double thePrice)
 	{
 		return thePrice > 0;
 	}
 
-	
+    /**
+     * The isValidBid checks to see if the bid is at least as much as the minimum bid of an item.
+     * @param theAmount the amount that is bid 
+     * @return true if bid is equal or more than the minimum bit allowed for an item, else return false
+     */
 	public boolean isValidBid(double theAmount)
 	{
 		return theAmount >= myMinBid;
 	}
 	
 	/**
-	 * @return the myItemName
+	 * @return the myItemName 
 	 */
 	public String getMyItemName() {
 		return myItemName;
@@ -164,6 +172,9 @@ public class Item implements Serializable {
 		this.myMinBid = myMinBid;
 	}
 	
+	/**
+	 * @return the myItemName
+	 */
 	public String getItemName(){
 		return myItemName;
 	}
