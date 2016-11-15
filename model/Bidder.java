@@ -113,8 +113,32 @@ public class Bidder extends User implements Serializable{
 			if (b.getMyItemID() == myBid.getMyItemID())
 				return false;
 		}
-		myBids.add(myBid);
 		return true;
+	}
+	
+	public void placeBid(Bid myBid) {
+		
+		myBids.add(myBid);
+	}
+	
+
+	public String printBids(){
+		
+		
+	
+		StringBuilder str = new StringBuilder();
+
+		
+		str.append("\n\tItem Number: \tItem Name: \tMinimum Bid: \tYour Bid");
+		
+		for (Bid b : myBids)
+		{
+			System.out.println("printBids");
+			str.append("\n\t"+ b.getMyItemID() + "\t\t" + b.getMyBidAmount());
+
+		}
+		str.append("\n");
+		return str.toString();
 	}
 
 }

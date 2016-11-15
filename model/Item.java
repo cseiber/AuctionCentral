@@ -44,7 +44,6 @@ public class Item implements Serializable {
 		myDescription = theDescription;
 		myMinBid = theMinBid;
 		myItemID = theItemNumber;
-		//This is another comment for Aaron
 	}
 	
 	public boolean isValidMinBidPrice(double thePrice)
@@ -184,11 +183,12 @@ public class Item implements Serializable {
 	@Override
 	public String toString(){
 		StringBuilder str = new StringBuilder();
-		str.append("Item:\t\t" + myItemName);
-		str.append("\nDescription:\t" + myDescription);
-		str.append("\nCondition:\t" + myCondition);
-		str.append("\nMinimum Bid:\t$" + myMinBid);
-		str.append("\n");
+
+		str.append("\n"+ myItemID);
+		str.append("\t\t" + myItemName);
+		str.append("\t\t" + myMinBid);
+		str.append("\t\t" + myCondition);
+		str.append("\t" + myDescription);
 		return str.toString();
 	}
 }

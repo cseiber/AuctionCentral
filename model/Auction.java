@@ -197,18 +197,17 @@ public class Auction implements Serializable {
 	
 	@Override
 	public String toString(){
-//		int i = 1;
 		StringBuilder str = new StringBuilder();
-		str.append("NPO: " + NPOname.getMyName());
+		str.append("Auction Number: " + myID);
+		str.append("\nNPO: " + NPOname.getMyUserName());
 		str.append("\nAuction date: " + getAuctionDate().toString());
 		str.append("\nTotal number of items: " + myItemList.size());
 		
-		str.append("\n\tItem Number: \tItem Name");
+		str.append("\nItem ID: \tName: \t\tMin Bid: \tCondition: \tdescription: ");
 		
-		for (Item itm : myItemList)
-		{
-			str.append("\n\t"+ itm.getMyItemID() + "\t\t" + itm.getItemName());
-//			i++;
+		for (Item itm : myItemList){
+
+			str.append(itm.toString());
 		}
 		str.append("\n");
 		return str.toString();

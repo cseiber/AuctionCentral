@@ -83,6 +83,28 @@ public class Bid implements Serializable{
 	public void setMyBidAmount(int myBidAmount) {
 		this.myBidAmount = myBidAmount;
 	}
+	
+//	@Override
+//	public String toString(){
+		
+		
+	
+//		StringBuilder str = new StringBuilder();
+//		str.append("NPO: " + NPOname.getMyName());
+//		str.append("\nAuction date: " + getAuctionDate().toString());
+//		str.append("\nTotal number of items: " + myItemList.size());
+//		
+//		str.append("\n\tItem Number: \tItem Name");
+//		
+//		for (Item itm : myItemList)
+//		{
+//			str.append("\n\t"+ itm.getMyItemID() + "\t\t" + itm.getItemName());
+////			i++;
+//		}
+//		str.append("\n");
+//		return str.toString();
+//	}
+	
 
 	
 }

@@ -57,11 +57,11 @@ public class AuctionTest {
 
 		// test addItem
 		assertEquals(0, ((ArrayList<Item>) theAuction.getItemList()).size(), 0.0);
-		theAuction.addItem(new Item("chocolate"));
-		assertEquals(1, ((ArrayList<Item>) theAuction.getItemList()).size(), 0.0);
-		theAuction.addItem(new Item("candy"));
-		assertEquals(2, ((ArrayList<Item>) theAuction.getItemList()).size(), 0.0);
-		theAuction.addItem(new Item("donut"));
+//		theAuction.addItem(new Item("chocolate"));
+//		assertEquals(1, ((ArrayList<Item>) theAuction.getItemList()).size(), 0.0);
+//		theAuction.addItem(new Item("candy"));
+//		assertEquals(2, ((ArrayList<Item>) theAuction.getItemList()).size(), 0.0);
+//		theAuction.addItem(new Item("donut"));
 		assertEquals(3, ((ArrayList<Item>) theAuction.getItemList()).size(), 0.0);
 	}
 
@@ -78,9 +78,9 @@ public class AuctionTest {
 	 */
 	@Test
 	public void testGetItemList() {
-		theAuction.addItem(new Item("chocolate"));
-		theAuction.addItem(new Item("banana"));
-		theAuction.addItem(new Item("cherry"));
+//		theAuction.addItem(new Item("chocolate"));
+//		theAuction.addItem(new Item("banana"));
+//		theAuction.addItem(new Item("cherry"));
 
 		Object[] items = theAuction.getItemList().toArray();
 	
@@ -94,9 +94,9 @@ public class AuctionTest {
 	 */
 	@Test
 	public void testtoString() {
-		theAuction.addItem(new Item("chocolate"));
-		theAuction.addItem(new Item("banana"));
-		theAuction.addItem(new Item("cherry"));
+//		theAuction.addItem(new Item("chocolate"));
+//		theAuction.addItem(new Item("banana"));
+//		theAuction.addItem(new Item("cherry"));
 		assertEquals("NPO Username: a\nTotal number of items: 3\n\tItem 1: chocolate\n\tItem 2: banana\n\tItem 3: cherry\n\n\n", theAuction.toString());
 	}
 
