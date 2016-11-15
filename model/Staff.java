@@ -2,8 +2,8 @@ package model;
 //match
 /**
  * staff user object
- * @author 
- *
+ * @author  Seiber, Tran, Gillet, Fitzgerald, Wiklanski
+ * @version 11/14/2016 
  */
 public class Staff extends User {
 

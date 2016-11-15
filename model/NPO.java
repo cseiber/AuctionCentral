@@ -3,7 +3,11 @@ package model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.Period;
-
+/**
+ * The NPO class  holds information of an NPO
+ * @author Seiber, Tran, Gillet, Fitzgerald, Wiklanski
+ * @version 11/14/2016 
+ */
 public class NPO extends User implements Serializable{
 	private boolean hasAuction;
 	LocalDateTime lastAuctionDate;
