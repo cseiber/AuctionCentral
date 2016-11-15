@@ -1,5 +1,5 @@
 package view;
-//match
+
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
@@ -31,7 +31,8 @@ public class NPOUI {
 			System.out.println("2. Add an item to my upcoming auction");
 			System.out.println("3. Log out and return to main menu.");
 			System.out.println("");
-			System.out.println(">>");
+			System.out.print(">> ");
+			checkInput();
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -61,8 +62,18 @@ public class NPOUI {
 			}
 		}
 	}
+	
+	private static void checkInput(){	
+		while(!sc.hasNextInt()){
+			System.out.println("\nPlease Enter an integer:");
+			System.out.println("");
+			System.out.print(">> ");
+			sc.next();	
+		}
+	}
+	
 
-	static void welcomeScreen() {
+	private static void welcomeScreen() {
 		choice = 0;
 		System.out.println("\n\nAuction Central Main NPO View");
 		System.out.println("You are logged in as: " + curNPO.getMyName());
@@ -73,7 +84,8 @@ public class NPOUI {
 			System.out.println("2. Add an item to my upcoming auction");
 			System.out.println("3. Log out and return to main menu.");
 			System.out.println("");
-			System.out.println(">>");
+			System.out.print(">> ");
+			checkInput();
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -116,6 +128,7 @@ public class NPOUI {
 		int items = 0;
 		if (ans.equals("y")) {
 			System.out.println("How many items do you plan on auctioning?");
+			checkInput();
 			items = sc.nextInt();
 			System.out.println("");
 			System.out.println("What notes would you like to add to the auction record?");
@@ -126,12 +139,16 @@ public class NPOUI {
 			System.out.println("Please enter the following information about when you would like the auction");
 			System.out.println("");
 			System.out.println("The Year (ex: 2015): ");
+			checkInput();
 			int year = sc.nextInt();
 			System.out.println("The month (ex: for May type '5'): ");
+			checkInput();
 			int month = sc.nextInt();
 			System.out.println("The day (ex: 15): ");
+			checkInput();
 			int day = sc.nextInt();
 			System.out.println("The time (on the hour please in 24 hour format, (ex: for 4pm type 16): ");
+			checkInput();
 			int hour = sc.nextInt();
 			LocalDateTime auctionDate = LocalDateTime.of(year, month, day, hour, 0);
 			System.out.println("");
@@ -144,7 +161,8 @@ public class NPOUI {
 			System.out.println("2. Change Auction information");
 			System.out.println("3. Cancel request and return to the NPO Main Menu.");
 			System.out.println("");
-			System.out.println(">>");
+			System.out.print(">> ");
+			checkInput();
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -181,7 +199,8 @@ public class NPOUI {
 			System.out.println("1. Add an item to my upcoming auction");
 			System.out.println("2. Return to the NPO Main Menu..");
 			System.out.println("");
-			System.out.println(">>");
+			System.out.print(">> ");
+			checkInput();
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -217,6 +236,11 @@ public class NPOUI {
 		System.out.println("large (at least one dimension is greater than three feet)");
 		String size = sc.next();
 		System.out.println("Minimum acceptable bid (positive integer)");
+		while(!sc.hasNextDouble()){
+			System.out.println("Please Enter a double: ");
+			System.out.println();
+			sc.next();
+		}
 		double minBid = sc.nextDouble();
 		System.out.println("");
 		System.out.println("Thank you, would you like to enter addtional details now? (y/n)");
@@ -250,7 +274,8 @@ public class NPOUI {
 			System.out.println("2. Change item information");
 			System.out.println("3. Cancel item add and return to the NPO Main menu.");
 			System.out.println("");
-			System.out.println(">>");
+			System.out.print(">> ");
+			checkInput();
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -291,7 +316,8 @@ public class NPOUI {
 			System.out.println("1. Add another item to my upcoming auction");
 			System.out.println("2. Return to the NPO Main Menu..");
 			System.out.println("");
-			System.out.println(">>");
+			System.out.print(">> ");
+			checkInput();
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:

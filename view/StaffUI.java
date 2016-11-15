@@ -1,5 +1,5 @@
 package view;
-//match
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
@@ -32,7 +32,8 @@ public class StaffUI {
 			System.out.println("1. View all upcoming auctions");
 			System.out.println("2. Log out and return to main menu.");
 			System.out.println("");
-			System.out.println(">>");
+			System.out.print (">> ");
+			checkInput();
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -49,6 +50,15 @@ public class StaffUI {
 
 	}
 	
+	private static void checkInput(){	
+		while(!sc.hasNextInt()){
+			System.out.println("\nPlease Enter an integer:");
+			System.out.println("");
+			System.out.print(">> ");
+			sc.next();	
+		}
+	}
+	
 	private static void welcomeScreen() {
 		choice = 0;
 		System.out.println("\n\nAuction Central Main Staff View");
@@ -59,7 +69,8 @@ public class StaffUI {
 			System.out.println("1. View all upcoming auctions");
 			System.out.println("2. Log out and return to main menu.");
 			System.out.println("");
-			System.out.println(">>");
+			System.out.print(">> ");
+			checkInput();
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -87,8 +98,8 @@ public class StaffUI {
 		int dayOfWeek = LocalDateTime.now().getDayOfWeek().getValue();
 		int count = 0;
 		int totalAuctions = 0;
-		for (int i = curDay - dayOfWeek; count < 35; i++) {
-			if ((count < 7 && count < dayOfWeek % 7 + 1) || count > numDays + dayOfWeek)
+		for (int i = curDay; count < 35; i++) {
+			if ((count < 7 && count < dayOfWeek % 7 + 1) || count > numDays)
 				days[count][0] = 0;
 			else {
 				if (!nextMonth)
@@ -116,6 +127,7 @@ public class StaffUI {
 		System.out.println("Total upcoming auctions: " + totalAuctions);
 		System.out.println("");
 		System.out.println("");
+		System.out.println("Year-Month: " + now.toString());
 		System.out.println("    Su\t      M\t       T\tW\tTh\t  F\t   Sa");
 		for (int i = 0; i < 35; i++) {
 			int day = days[i][0];
@@ -143,7 +155,7 @@ public class StaffUI {
 			System.out.println("1. Return to Staff Menu");
 			System.out.println("2. Log out and return to main menu");
 			System.out.println("");
-			System.out.println(">>");
+			System.out.print(">> ");
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -160,4 +172,3 @@ public class StaffUI {
 	}
 
 }
-
